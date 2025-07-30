@@ -559,6 +559,12 @@ onUnmounted(() => {
   padding: 20px 0;
   height: calc(100vh - 180px); /* 为底部留出空间 */
   overflow-y: auto;
+  -ms-overflow-style: none; /* 隐藏 IE/Edge 滚动条 */
+  scrollbar-width: none; /* 隐藏 Firefox 滚动条 */
+}
+
+.category-nav::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
 }
 
 .nav-title {
