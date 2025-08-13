@@ -569,7 +569,7 @@ onUnmounted(() => {
 }
 
 .site-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
   color: white;
@@ -666,7 +666,7 @@ onUnmounted(() => {
 
 .search-header {
   background: white;
-  padding: 20px;
+  padding: 70px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
@@ -939,13 +939,13 @@ onUnmounted(() => {
 }
 
 .category-section {
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 
 .category-title {
   font-size: 32px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   color: #2c3e50;
   display: flex;
   align-items: center;
@@ -963,8 +963,8 @@ onUnmounted(() => {
 
 .sites-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0px;
 }
 
 .site-card {
@@ -972,7 +972,7 @@ onUnmounted(() => {
   align-items: center;
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 1px;
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
@@ -1003,8 +1003,8 @@ onUnmounted(() => {
 }
 
 .site-icon {
-  width: 48px;
-  height: 48px;
+  width: 0px;
+  height: 0px;
   margin-right: 16px;
   border-radius: 8px;
   overflow: hidden;
@@ -1030,7 +1030,7 @@ onUnmounted(() => {
 
 .site-name {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 300;
   margin: 0 0 5px 0;
   color: #2c3e50;
 }
