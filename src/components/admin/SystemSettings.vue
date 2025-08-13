@@ -320,6 +320,7 @@ const searchEngineOptions = [
   { value: 'google', label: 'Google' },
   { value: 'taobao', label: '淘宝' },
   { value: 'jingdong', label: '京东' },
+  { value: 'jiexi', label: '会员解析' },
   { value: 'juzipan', label: '橘子盘搜' },
   { value: 'limao', label: '猫狸盘搜' }
 ]
