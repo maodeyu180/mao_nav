@@ -23,11 +23,11 @@ export function useNavigation() {
       title.value = mockData.title
 
       // 设置默认搜索引擎，如果未指定或不存在则使用bing
-      const searchEngines = ['google', 'baidu', 'bing', 'duckduckgo']
+      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'juzipan', 'limao']
       if (mockData.search && searchEngines.includes(mockData.search)) {
         defaultSearchEngine.value = mockData.search
       } else {
-        defaultSearchEngine.value = 'bing'
+        defaultSearchEngine.value = 'baidu'
       }
 
       // 动态设置页面标题
@@ -42,11 +42,11 @@ export function useNavigation() {
       title.value = mockData.title
 
       // 设置默认搜索引擎
-      const searchEngines = ['google', 'baidu', 'bing', 'duckduckgo']
+      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'juzipan', 'limao']
       if (mockData.search && searchEngines.includes(mockData.search)) {
         defaultSearchEngine.value = mockData.search
       } else {
-        defaultSearchEngine.value = 'bing'
+        defaultSearchEngine.value = 'baidu'
       }
 
       document.title = title.value
