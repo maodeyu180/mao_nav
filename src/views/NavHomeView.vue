@@ -82,6 +82,7 @@
               <option value="google">Google</option>
               <option value="taobao">淘宝</option>
               <option value="jingdong">京东</option>
+              <option value="jiexi">会员解析</option>
               <option value="juzipan">橘子盘搜</option>
               <option value="limao">猫狸盘搜</option>
             </select>
@@ -229,6 +230,7 @@ import bingLogo from '@/assets/a.png'
 import googleLogo from '@/assets/a.png'
 import taobaoLogo from '@/assets/a.png'
 import jingdongLogo from '@/assets/a.png'
+import jiexiLogo from '@/assets/a.png'
 import juzipanLogo from '@/assets/a.png'
 import limaoLogo from '@/assets/a.png'
 // 导入GitHub logo
@@ -278,6 +280,11 @@ const searchEngines = {
     url: 'https://search.jd.com/Search?keyword=',
     icon: jingdongLogo,
     placeholder: '（京东）输入商品的名字关键词'
+  },
+  jingdong: {
+    url: 'https://z1.m1907.top/?jx=',
+    icon: jiexiLogo,
+    placeholder: '（视频解析）输入剧名或链接(失效左下角版权信息处联系我)'
   },
   limao: {
     url: 'https://www.alipansou.com/search?k=',
