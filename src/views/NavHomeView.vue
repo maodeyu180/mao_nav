@@ -1031,7 +1031,7 @@ onUnmounted(() => {
 .site-name {
   font-size: 18px;
   font-weight: 300;
-  margin: 0 0 5px 0;
+  margin: 0 0 0px 0;
   color: #2c3e50;
 }
 
