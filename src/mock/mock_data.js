@@ -47,6 +47,13 @@ export const mockData = {
           "url": "https://xnss.fun/",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1755095442015",
+          "name": "短视频无水印下载",
+          "url": "https://www.zanqianba.com/",
+          "description": "",
+          "icon": ""
         }
       ]
     },
@@ -1132,7 +1139,5 @@ export const mockData = {
       ]
     }
   ],
-  "title": "小牛搜索",
-  "_fileSha": "bfc96c17d7e124785d81684b83afc42a0e0656a2",
-  "search": "jiexi"
+  "title": "小牛搜索"
 }
