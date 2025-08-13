@@ -15,7 +15,7 @@ const router = createRouter({
       name: 'admin',
       component: () => import('../views/AdminView.vue'),
       meta: {
-        title: '管理后台 - 猫猫导航',
+        title: '管理后台 - 小牛搜索',
         requiresAuth: true
       }
     },
@@ -24,7 +24,7 @@ const router = createRouter({
       name: 'test',
       component: TestView,
       meta: {
-        title: '环境变量测试 - 猫猫导航'
+        title: '环境变量测试 - 小牛搜索'
       }
     },
   ],
@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta?.title) {
     document.title = to.meta.title
   } else {
-    document.title = '猫猫导航'
+    document.title = '小牛搜索'
   }
 
   next()
