@@ -282,7 +282,7 @@ const searchEngines = {
     placeholder: '（京东）输入商品的名字关键词'
   },
   jiexi: {
-    url: 'https://z1.m1907.top/?jx=',
+    url: 'https://im1907.top/?jx=',
     icon: jiexiLogo,
     placeholder: '（视频解析输入剧名或链接）失效左下角版权信息处联系我'
   },
