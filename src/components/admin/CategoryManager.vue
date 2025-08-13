@@ -250,7 +250,7 @@ const closeModal = () => {
 // 处理图片错误
 const handleImageError = (event) => {
   // 设置默认的 favicon.ico 作为 fallback 图片
-  event.target.src = '/favicon.ico'
+  event.target.src = 'https://img.alicdn.com/imgextra/i3/2327995847/O1CN01fhXl2q1t3yYaZYRnO_!!2327995847.png'
   event.target.onerror = null // 防止无限循环
 }
 </script>
