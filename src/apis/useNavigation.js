@@ -4,7 +4,7 @@ import { mockData } from '../mock/mock_data.js'
 export function useNavigation() {
   const categories = ref([])
   const title = ref('')
-  const defaultSearchEngine = ref('bing')
+  const defaultSearchEngine = ref('baidu')
   const loading = ref(false)
   const error = ref(null)
 
