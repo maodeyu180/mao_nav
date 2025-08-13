@@ -77,10 +77,13 @@
           <div class="search-engine-selector">
             <img :src="searchEngines[selectedEngine].icon" :alt="selectedEngine" class="engine-logo" />
             <select v-model="selectedEngine" class="engine-select">
-              <option value="google">Google</option>
-              <option value="baidu">Baidu</option>
+              <option value="baidu">百度</option>
               <option value="bing">Bing</option>
-              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="google">Google</option>
+              <option value="taobao">淘宝</option>
+              <option value="jingdong">京东</option>
+              <option value="juzipan">橘子盘搜</option>
+              <option value="limao">猫狸盘搜</option>
             </select>
           </div>
           <input
@@ -221,10 +224,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useNavigation } from '@/apis/useNavigation.js'
 import { useThemeStore } from '@/stores/counter.js'
 // 导入搜索引擎logo图片
-import googleLogo from '@/assets/a.png'
 import baiduLogo from '@/assets/a.png'
 import bingLogo from '@/assets/a.png'
-import duckLogo from '@/assets/a.png'
+import googleLogo from '@/assets/a.png'
+import taobaoLogo from '@/assets/a.png'
+import jingdongLogo from '@/assets/a.png'
+import juzipanLogo from '@/assets/a.png'
+import limaoLogo from '@/assets/a.png'
 // 导入GitHub logo
 import githubLogo from '@/assets/a.png'
 
@@ -236,7 +242,7 @@ const themeStore = useThemeStore()
 
 // 响应式数据
 const searchQuery = ref('') // 搜索查询
-const selectedEngine = ref('bing') // 选中的搜索引擎，初始值会在组件挂载后更新
+const selectedEngine = ref('baidu') // 选中的搜索引擎，初始值会在组件挂载后更新
 const showMobileMenu = ref(false) // 移动端菜单显示状态
 
 // 锁定功能相关
@@ -248,25 +254,40 @@ const unlockError = ref('') // 解锁错误信息
 
 // 搜索引擎配置
 const searchEngines = {
-  google: {
-    url: 'https://www.google.com/search?q=',
-    icon: googleLogo,
-    placeholder: 'Google (点logo切换搜索引擎'
-  },
   baidu: {
     url: 'https://www.baidu.com/s?wd=',
     icon: baiduLogo,
-    placeholder: '百度一下(点logo切换搜索引擎'
+    placeholder: '百度一下(点logo切换搜索引擎)'
   },
   bing: {
     url: 'https://www.bing.com/search?q=',
     icon: bingLogo,
     placeholder: 'Bing (点logo切换搜索引擎)'
   },
-  duckduckgo: {
-    url: 'https://duckduckgo.com/?q=',
-    icon: duckLogo,
-    placeholder: 'DuckDuckGo (点logo切换搜索引擎)'
+  google: {
+    url: 'https://www.google.com/search?q=',
+    icon: googleLogo,
+    placeholder: 'Google 搜索(点logo切换搜索引擎)'
+  },
+  taobao: {
+    url: 'https://s.taobao.com/search?q=',
+    icon: taobaoLogo,
+    placeholder: '（淘宝）输入商品的名字关键词'
+  },
+  jingdong: {
+    url: 'https://search.jd.com/Search?keyword=',
+    icon: jingdongLogo,
+    placeholder: '（京东）输入商品的名字关键词'
+  },
+  limao: {
+    url: 'https://www.alipansou.com/search?k=',
+    icon: limaoLogo,
+    placeholder: '（橘子盘搜）输入电视电影资源名字'
+  },
+  juzipan: {
+    url: 'https://www.alipansou.com/search?k=',
+    icon: juzipanLogo,
+    placeholder: '（狸猫盘搜）输入电视电影资源名字'
   }
 }
 
@@ -380,7 +401,7 @@ const handleSearch = () => {
 // 处理图片加载错误
 const handleImageError = (event) => {
   // 设置默认的 favicon.ico 作为 fallback 图片
-  event.target.src = '/favicon.ico'
+  event.target.src = 'https://img.alicdn.com/imgextra/i3/2327995847/O1CN01fhXl2q1t3yYaZYRnO_!!2327995847.png'
   event.target.onerror = null // 防止无限循环
 }
 
