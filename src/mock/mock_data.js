@@ -364,6 +364,13 @@ export const mockData = {
           "url": "https://www.nmme.xyz",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1755088291220",
+          "name": "杂货铺",
+          "url": "https://adzhp.cc/",
+          "description": "",
+          "icon": ""
         }
       ]
     },
