@@ -23,7 +23,7 @@ export function useNavigation() {
       title.value = mockData.title
 
       // 设置默认搜索引擎，如果未指定或不存在则使用bing
-      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'jiexi' 'juzipan', 'limao']
+      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'jiexi', 'juzipan', 'limao']
       if (mockData.search && searchEngines.includes(mockData.search)) {
         defaultSearchEngine.value = mockData.search
       } else {
@@ -42,7 +42,7 @@ export function useNavigation() {
       title.value = mockData.title
 
       // 设置默认搜索引擎
-      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'jiexi' 'juzipan', 'limao']
+      const searchEngines = ['baidu', 'bing', 'google', 'taobao', 'jingdong', 'jiexi', 'juzipan', 'limao']
       if (mockData.search && searchEngines.includes(mockData.search)) {
         defaultSearchEngine.value = mockData.search
       } else {
