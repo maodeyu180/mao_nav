@@ -1,5 +1,5 @@
 # wrangler.toml
-name = "mao_nav"
+name = "小牛搜索"
 compatibility_date = "2024-01-01"
 
 [build]
