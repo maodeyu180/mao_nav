@@ -33,6 +33,13 @@ export const mockData = {
           "url": "https://xiaoniuss.top",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1755075270785",
+          "name": "xnssfun",
+          "url": "https://xnss.fun/",
+          "description": "",
+          "icon": ""
         }
       ]
     },
@@ -1111,7 +1118,5 @@ export const mockData = {
       ]
     }
   ],
-  "title": "小牛搜索",
-  "_fileSha": "68ce6f51bf4d6ab4cb995379ea93e4e84a38912a",
-  "search": "baidu"
+  "title": "小牛搜索"
 }
