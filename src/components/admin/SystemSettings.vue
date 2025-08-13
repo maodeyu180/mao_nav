@@ -309,16 +309,19 @@ const currentTitle = ref('')
 const titleSaving = ref(false)
 
 // 搜索引擎设置
-const searchEngine = ref('bing')
-const currentSearchEngine = ref('bing')
+const searchEngine = ref('baidu')
+const currentSearchEngine = ref('baidu')
 const searchEngineSaving = ref(false)
 
 // 搜索引擎选项
 const searchEngineOptions = [
-  { value: 'google', label: 'Google' },
-  { value: 'baidu', label: '百度' },
+  { value: 'baidu', label: '百度' }, 
   { value: 'bing', label: 'Bing' },
-  { value: 'duckduckgo', label: 'DuckDuckGo' }
+  { value: 'google', label: 'Google' },
+  { value: 'taobao', label: '淘宝' },
+  { value: 'jingdong', label: '京东' },
+  { value: 'juzipan', label: '橘子盘搜' },
+  { value: 'limao', label: '猫狸盘搜' }
 ]
 
 // Logo设置
@@ -388,16 +391,16 @@ const getSystemInfo = () => {
 const loadWebsiteSettings = async () => {
   try {
     const data = await loadCategoriesFromGitHub()
-    currentTitle.value = data.title || '猫猫导航'
+    currentTitle.value = data.title || '小牛搜索'
     websiteTitle.value = currentTitle.value
 
     // 加载搜索引擎设置
-    currentSearchEngine.value = data.search || 'bing'
+    currentSearchEngine.value = data.search || 'baidu'
     searchEngine.value = currentSearchEngine.value
   } catch (error) {
     console.error('加载网站设置失败:', error)
-    currentTitle.value = '猫猫导航'
-    websiteTitle.value = '猫猫导航'
+    currentTitle.value = '小牛搜索'
+    websiteTitle.value = '小牛搜索'
     currentSearchEngine.value = 'bing'
     searchEngine.value = 'bing'
   }
