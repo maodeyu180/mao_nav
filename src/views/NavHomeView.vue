@@ -284,7 +284,7 @@ const searchEngines = {
   jingdong: {
     url: 'https://z1.m1907.top/?jx=',
     icon: jiexiLogo,
-    placeholder: '（视频解析）输入剧名或链接(失效左下角版权信息处联系我)'
+    placeholder: '（视频解析输入剧名或链接）失效左下角版权信息处联系我'
   },
   limao: {
     url: 'https://www.alipansou.com/search?k=',
