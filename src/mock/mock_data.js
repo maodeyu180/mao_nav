@@ -7,6 +7,13 @@ export const mockData = {
       "order": 0,
       "sites": [
         {
+          "id": "site-1755088976119",
+          "name": "视频解析",
+          "url": "https://v.xiaoniuss.top/",
+          "description": "",
+          "icon": ""
+        },
+        {
           "id": "site-1754996088850",
           "name": "豆包",
           "url": "https://www.doubao.com/",
