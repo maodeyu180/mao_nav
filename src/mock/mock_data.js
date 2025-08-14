@@ -223,6 +223,13 @@ export const mockData = {
           "url": "https://www.kdocs.cn/latest",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1755137492913",
+          "name": "抖音来客",
+          "url": "https://life.douyin.com/",
+          "description": "",
+          "icon": ""
         }
       ]
     },
