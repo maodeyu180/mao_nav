@@ -82,7 +82,7 @@
               <option value="google">Google</option>
               <option value="taobao">淘宝</option>
               <option value="jingdong">京东</option>
-              <option value="jiexi">会员解析</option>
+              <option value="jiexi">蜜码</option>
               <option value="juzipan">橘子盘搜</option>
               <option value="limao">猫狸盘搜</option>
             </select>
@@ -284,7 +284,7 @@ const searchEngines = {
   jiexi: {
     url: 'https://im1907.top/?jx=',
     icon: jiexiLogo,
-    placeholder: '（视频解析输入剧名或链接）失效左下角版权信息处联系我'
+    placeholder: '（蜜码）输入密令'
   },
   limao: {
     url: 'https://www.alipansou.com/search?k=',
