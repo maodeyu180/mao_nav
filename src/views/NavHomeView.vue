@@ -282,7 +282,7 @@ const searchEngines = {
     placeholder: '（京东）输入商品的名字关键词'
   },
   jiexi: {
-    url: 'https://im1907.top/?jx=',
+    url: 'https://xiaoniuss.top/mima/',
     icon: jiexiLogo,
     placeholder: '（蜜码）输入密令'
   },
