@@ -627,7 +627,7 @@ onUnmounted(() => {
 .category-item {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 2px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
