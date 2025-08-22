@@ -55,7 +55,7 @@
       <!-- 左侧边栏底部信息 -->
       <div class="sidebar-footer">
         <a
-          href="http://xiaoniuss.top/xnssbq"
+          href="http://bq.xnss.fun/zzbq"
           target="_blank"
           rel="noopener noreferrer"
           class="github-link"
