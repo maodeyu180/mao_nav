@@ -32,8 +32,8 @@
     <aside class="sidebar">
       <!-- Logo区域 -->
       <div class="logo-section">
-        <img src="/logo.png" alt="logo" class="logo" />
-        <h1 class="site-title">{{ title || '猫猫导航' }}</h1>
+        <img src="https://img.alicdn.com/imgextra/i3/2327995847/O1CN01fhXl2q1t3yYaZYRnO_!!2327995847.png" alt="logo" class="logo" />
+        <h1 class="site-title">{{ title || '小牛搜索' }}</h1>
       </div>
 
       <!-- 分类导航 -->
@@ -55,7 +55,7 @@
       <!-- 左侧边栏底部信息 -->
       <div class="sidebar-footer">
         <a
-          href="https://github.com/maodeyu180/mao_nav"
+          href="http://bq.xnss.fun/zzbq"
           target="_blank"
           rel="noopener noreferrer"
           class="github-link"
@@ -64,7 +64,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
-          <span>开源不易，Star一下吧！⭐</span>
+          <span>版权信息说明</span>
         </a>
       </div>
     </aside>
@@ -77,10 +77,14 @@
           <div class="search-engine-selector">
             <img :src="searchEngines[selectedEngine].icon" :alt="selectedEngine" class="engine-logo" />
             <select v-model="selectedEngine" class="engine-select">
-              <option value="google">Google</option>
-              <option value="baidu">Baidu</option>
+              <option value="baidu">百度</option>
               <option value="bing">Bing</option>
-              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="google">Google</option>
+              <option value="taobao">淘宝</option>
+              <option value="jingdong">京东</option>
+              <option value="jiexi">蜜码</option>
+              <option value="juzipan">橘子盘搜</option>
+              <option value="limao">猫狸盘搜</option>
             </select>
           </div>
           <input
@@ -186,7 +190,7 @@
           <footer class="page-footer" hidden="true">
             <div class="footer-content">
               <div class="footer-info">
-                <h3>{{ title || '猫猫导航' }}</h3>
+                <h3>{{ title || '小牛搜索' }}</h3>
                 <p>一个简洁、美观的导航网站，收录优质网站资源</p>
               </div>
 
@@ -221,12 +225,16 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useNavigation } from '@/apis/useNavigation.js'
 import { useThemeStore } from '@/stores/counter.js'
 // 导入搜索引擎logo图片
-import googleLogo from '@/assets/goolge.png'
-import baiduLogo from '@/assets/baidu.png'
-import bingLogo from '@/assets/bing.png'
-import duckLogo from '@/assets/duck.png'
+import baiduLogo from '@/assets/a.png'
+import bingLogo from '@/assets/a.png'
+import googleLogo from '@/assets/a.png'
+import taobaoLogo from '@/assets/a.png'
+import jingdongLogo from '@/assets/a.png'
+import jiexiLogo from '@/assets/a.png'
+import juzipanLogo from '@/assets/a.png'
+import limaoLogo from '@/assets/a.png'
 // 导入GitHub logo
-import githubLogo from '@/assets/github.png'
+import githubLogo from '@/assets/a.png'
 
 // 使用导航API
 const { categories, title, defaultSearchEngine, loading, error, fetchCategories } = useNavigation()
@@ -236,7 +244,7 @@ const themeStore = useThemeStore()
 
 // 响应式数据
 const searchQuery = ref('') // 搜索查询
-const selectedEngine = ref('bing') // 选中的搜索引擎，初始值会在组件挂载后更新
+const selectedEngine = ref('baidu') // 选中的搜索引擎，初始值会在组件挂载后更新
 const showMobileMenu = ref(false) // 移动端菜单显示状态
 
 // 锁定功能相关
@@ -248,25 +256,45 @@ const unlockError = ref('') // 解锁错误信息
 
 // 搜索引擎配置
 const searchEngines = {
-  google: {
-    url: 'https://www.google.com/search?q=',
-    icon: googleLogo,
-    placeholder: 'Google (点logo切换搜索引擎'
-  },
   baidu: {
     url: 'https://www.baidu.com/s?wd=',
     icon: baiduLogo,
-    placeholder: '百度一下(点logo切换搜索引擎'
+    placeholder: '百度一下(点logo切换搜索引擎)'
   },
   bing: {
     url: 'https://www.bing.com/search?q=',
     icon: bingLogo,
     placeholder: 'Bing (点logo切换搜索引擎)'
   },
-  duckduckgo: {
-    url: 'https://duckduckgo.com/?q=',
-    icon: duckLogo,
-    placeholder: 'DuckDuckGo (点logo切换搜索引擎)'
+  google: {
+    url: 'https://www.google.com/search?q=',
+    icon: googleLogo,
+    placeholder: 'Google 搜索(点logo切换搜索引擎)'
+  },
+  taobao: {
+    url: 'https://s.taobao.com/search?q=',
+    icon: taobaoLogo,
+    placeholder: '（淘宝）输入商品的名字关键词'
+  },
+  jingdong: {
+    url: 'https://search.jd.com/Search?keyword=',
+    icon: jingdongLogo,
+    placeholder: '（京东）输入商品的名字关键词'
+  },
+  jiexi: {
+    url: 'https://m.xnss.fun/mima/',
+    icon: jiexiLogo,
+    placeholder: '（蜜码）输入密令'
+  },
+  limao: {
+    url: 'https://www.alipansou.com/search?k=',
+    icon: limaoLogo,
+    placeholder: '（橘子盘搜）输入电视电影资源名字'
+  },
+  juzipan: {
+    url: 'https://www.alipansou.com/search?k=',
+    icon: juzipanLogo,
+    placeholder: '（狸猫盘搜）输入电视电影资源名字'
   }
 }
 
@@ -380,7 +408,7 @@ const handleSearch = () => {
 // 处理图片加载错误
 const handleImageError = (event) => {
   // 设置默认的 favicon.ico 作为 fallback 图片
-  event.target.src = '/favicon.ico'
+  event.target.src = 'https://img.alicdn.com/imgextra/i3/2327995847/O1CN01fhXl2q1t3yYaZYRnO_!!2327995847.png'
   event.target.onerror = null // 防止无限循环
 }
 
@@ -542,7 +570,7 @@ onUnmounted(() => {
 
 /* 左侧边栏样式 */
 .sidebar {
-  width: 280px;
+  width: 200px;
   background-color: #2c3e50;
   color: white;
   padding: 0;
@@ -569,7 +597,7 @@ onUnmounted(() => {
 }
 
 .site-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
   color: white;
@@ -599,7 +627,7 @@ onUnmounted(() => {
 .category-item {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 2px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -666,7 +694,7 @@ onUnmounted(() => {
 
 .search-header {
   background: white;
-  padding: 20px;
+  padding: 70px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
@@ -934,18 +962,18 @@ onUnmounted(() => {
 }
 
 .categories-container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
 .category-section {
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 
 .category-title {
   font-size: 32px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   color: #2c3e50;
   display: flex;
   align-items: center;
@@ -963,8 +991,8 @@ onUnmounted(() => {
 
 .sites-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0px;
 }
 
 .site-card {
@@ -972,7 +1000,7 @@ onUnmounted(() => {
   align-items: center;
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 1px;
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
@@ -1003,8 +1031,8 @@ onUnmounted(() => {
 }
 
 .site-icon {
-  width: 48px;
-  height: 48px;
+  width: 0px;
+  height: 0px;
   margin-right: 16px;
   border-radius: 8px;
   overflow: hidden;
@@ -1030,8 +1058,8 @@ onUnmounted(() => {
 
 .site-name {
   font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 5px 0;
+  font-weight: 300;
+  margin: 0 0 0px 0;
   color: #2c3e50;
 }
 
