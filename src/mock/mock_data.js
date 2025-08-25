@@ -28,20 +28,6 @@ export const mockData = {
           "icon": ""
         },
         {
-          "id": "site-1755049534697",
-          "name": "小牛搜索top",
-          "url": "https://xiaoniuss.top",
-          "description": "",
-          "icon": ""
-        },
-        {
-          "id": "site-1755075270785",
-          "name": "xnssfun",
-          "url": "https://xnss.fun/",
-          "description": "",
-          "icon": ""
-        },
-        {
           "id": "site-1755095442015",
           "name": "短视频无水印下载",
           "url": "https://www.zanqianba.com/",
