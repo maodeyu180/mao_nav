@@ -47,6 +47,12 @@ export const mockData = {
           "url": "https://curlconverter.com/",
           "description": "curl命令转换工具",
           "icon": "/sitelogo/curlconverter.com.ico"
+        },
+        {
+          "id": "site-1756709787762",
+          "name": "云效",
+          "url": "https://devops.aliyun.com/",
+          "description": ""
         }
       ]
     },
