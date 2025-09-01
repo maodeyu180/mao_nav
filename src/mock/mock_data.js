@@ -7,6 +7,13 @@ export const mockData = {
       "order": 0,
       "sites": [
         {
+          "id": "site-1756709690484",
+          "name": "甘棠DevOps平台4.0",
+          "url": "https://devops4.gantcloud.com/",
+          "description": "",
+          "icon": ""
+        },
+        {
           "id": "site-1752857783656",
           "name": "OpenAI",
           "url": "https://chatgpt.com",
@@ -147,7 +154,7 @@ export const mockData = {
       "id": "dev-tools",
       "name": "开发工具",
       "icon": "🛠️",
-      "order": 1,
+      "order": 3,
       "sites": [
         {
           "id": "github",
