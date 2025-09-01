@@ -286,14 +286,14 @@ const searchEngines = {
     icon: jiexiLogo,
     placeholder: '（蜜码）输入密令'
   },
-  limao: {
+    juzipan: {
     url: 'https://www.nmme.icu/s/1/?wd=',
-    icon: limaoLogo,
+    icon: juzipanLogo,
     placeholder: '（橘子盘搜）输入电视电影资源名字'
   },
-  juzipan: {
+  limao: {
     url: 'https://www.alipansou.com/search?k=',
-    icon: juzipanLogo,
+    icon: limaoLogo,
     placeholder: '（狸猫盘搜）输入电视电影资源名字'
   }
 }
