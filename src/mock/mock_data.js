@@ -63,6 +63,12 @@ export const mockData = {
       "order": 3,
       "sites": [
         {
+          "id": "site-1756709878353",
+          "name": "DeepSeek",
+          "url": "https://chat.deepseek.com/",
+          "description": ""
+        },
+        {
           "id": "chatgpt",
           "name": "ChatGPT",
           "url": "https://chat.openai.com",
