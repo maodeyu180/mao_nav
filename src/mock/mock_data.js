@@ -60,7 +60,7 @@ export const mockData = {
       "id": "ai-tools",
       "name": "AI智能",
       "icon": "🤖",
-      "order": 1,
+      "order": 3,
       "sites": [
         {
           "id": "chatgpt",
@@ -160,7 +160,7 @@ export const mockData = {
       "id": "dev-tools",
       "name": "开发工具",
       "icon": "🛠️",
-      "order": 3,
+      "order": 1,
       "sites": [
         {
           "id": "github",
