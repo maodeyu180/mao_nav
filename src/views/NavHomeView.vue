@@ -287,7 +287,7 @@ const searchEngines = {
     placeholder: '（蜜码）输入密令'
   },
   limao: {
-    url: 'https://www.alipansou.com/search?k=',
+    url: 'https://www.nmme.icu/s/1/?wd=',
     icon: limaoLogo,
     placeholder: '（橘子盘搜）输入电视电影资源名字'
   },
