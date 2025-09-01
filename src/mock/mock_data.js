@@ -20,11 +20,10 @@ export const mockData = {
           "description": ""
         },
         {
-          "id": "site-1752649007053",
-          "name": "BeJson",
-          "url": "https://www.bejson.com/",
-          "description": "工具大全",
-          "icon": "/sitelogo/www.bejson.com.ico"
+          "id": "site-1756710898014",
+          "name": "Json",
+          "url": "https://www.json.cn/",
+          "description": ""
         },
         {
           "id": "linux-do",
