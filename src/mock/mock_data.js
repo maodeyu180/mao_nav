@@ -20,6 +20,13 @@ export const mockData = {
           "description": ""
         },
         {
+          "id": "site-1757036780998",
+          "name": "iLowCode",
+          "url": "http://prd-lowcode-demo-ui.ilowcode.gantcloud.com/ilowcodeLogin",
+          "description": "甘棠软件iLowCode产品",
+          "icon": ""
+        },
+        {
           "id": "site-1756710898014",
           "name": "Json",
           "url": "https://www.json.cn/",
