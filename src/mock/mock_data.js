@@ -11,13 +11,14 @@ export const mockData = {
           "name": "甘棠DevOps",
           "url": "https://devops4.gantcloud.com/",
           "description": "甘棠DevOps平台-4.0",
-          "icon": ""
+          "icon": "https://devops4.gantcloud.com/favicon.ico"
         },
         {
           "id": "site-1756709787762",
           "name": "云效",
           "url": "https://devops.aliyun.com/",
-          "description": ""
+          "description": "",
+          "icon": "https://devops.aliyun.com/favicon.ico"
         },
         {
           "id": "site-1757036780998",
@@ -30,7 +31,8 @@ export const mockData = {
           "id": "site-1756710898014",
           "name": "Json",
           "url": "https://www.json.cn/",
-          "description": ""
+          "description": "",
+          "icon": "https://static.json.cn/r/img/favicon/favicon.ico"
         },
         {
           "id": "linux-do",
