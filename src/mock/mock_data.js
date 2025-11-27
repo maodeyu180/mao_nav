@@ -62,6 +62,13 @@ export const mockData = {
       "order": 1,
       "sites": [
         {
+          "id": "site-1764207271340",
+          "name": "XML-JSON互转",
+          "url": "https://www.bejson.com/xml2json/",
+          "description": "",
+          "icon": "https://www.bejson.com/favicon.ico"
+        },
+        {
           "id": "json-formatter",
           "name": "JSON Formatter",
           "url": "https://jsonformatter.org",
