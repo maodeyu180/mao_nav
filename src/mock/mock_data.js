@@ -25,7 +25,7 @@ export const mockData = {
           "name": "iLowCode",
           "url": "http://prd-lowcode-demo-ui.ilowcode.gantcloud.com/ilowcodeLogin",
           "description": "甘棠软件iLowCode产品",
-          "icon": ""
+          "icon": " http://prd-lowcode-demo-ui.ilowcode.gantcloud.com/public/fa.png"
         },
         {
           "id": "site-1756710898014",
