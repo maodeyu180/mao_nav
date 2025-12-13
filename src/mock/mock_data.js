@@ -71,6 +71,27 @@ export const mockData = {
           "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACbElEQVR4AWJwL/ChKyZL0y9XpzJAr/UAG0sYhWE4xrVt27Zt27Zt1ba7Rm27vbZt226/9sxmNtN1MZvkTSZ8cs7op8wG/ho58iVlFvDzuKn1f44ciQ8TZoCu+QZpOsGXsRPxasYCXFu4R8gr+MG+WyUWu71wKzLXOGCFxKMSb+DXCRNPcjHldgWc9p88yQv4efnw1ZqY495M7Dp2G5Mtvq8uVfDLnPG99GFLLF9hivUXDLL536tUwM8rR/Z6vWYGbu1cg8x9FirsUEYhbLjVH8ok1OgaXx4epsbkx4RwsEjTwvpZ5LIZXa/ep/GzdYdThF23n4YUp20QeVnDxikW2x2u6MS6W6rqcgLoegInO1ugklHwW0KD+r/E9YTvA1uCui4YiDTlBAaz8BdihV8WFrjdU2OakGadT0BQUH0t8G9SlR1/46u9/BpTH2wPktsymF/MAlgEH8JyhQqc6HUf/Zw+oZftT4OYBvyyoC1q8Hd6tR0/s2q//JTTEBRhF892R9jpUQy4Lnk3A44U5KCf7w30c3lDoHFMJ6ix0ucX2wgIY0GHs/MYcGq0E4ZJoxi0j/tT7pSGICG7UqMPTcb1wSdZcFPOBsxKPIYxoQL0FWQanbKz8YdGd15XZ672uzoDh88t505JqOaULFy814JbwM2ZvTSnJJSm1ERL/OJzUe6UA5UympKLlt6njbtedsr+YR7oLA1XowN9nq3m5fe05OSqkyNTN6Nd9FG0DfZj0O6irJO8/Q/pZ8uCLMrrD5hqHb9b2CBhIwPSNe9nmqapS+oTSNWI2Vufd5CqnLDiJWW2c2nZxCU7KP7BUigf+OW0iDHe5JwAAAAASUVORK5CYII="
         },
         {
+          "id": "site-1765629546446",
+          "name": "千问",
+          "url": "https://www.qianwen.com/",
+          "description": "Qwen最新模型体验-通义千问",
+          "icon": "https://th.bing.com/th/id/ODF.Uf9cLbp4699iA5sxxWwSJA?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&cb=ucfimg1&pid=1.2&ucfimg=1"
+        },
+        {
+          "id": "site-1765629639421",
+          "name": "豆包 - 字节跳动旗下 AI 智能助手",
+          "url": "https://www.doubao.com/chat/",
+          "description": "字节跳动旗下 AI 智能助手",
+          "icon": "https://th.bing.com/th/id/ODF.llFymawgMlKVUuhTiuEA9g?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&cb=ucfimg1&pid=1.2&ucfimg=1"
+        },
+        {
+          "id": "site-1765629824330",
+          "name": "DeepSeek",
+          "url": "https://www.deepseek.com/",
+          "description": "深度求索",
+          "icon": "https://th.bing.com/th/id/ODF.YxK1MUJaRoBfBG4UGNrXAA?w=32&h=32&qlt=90&pcl=fffffc&r=0&o=6&cb=ucfimg1&pid=1.2&ucfimg=1"
+        },
+        {
           "id": "claude",
           "name": "Claude",
           "url": "https://claude.ai",
