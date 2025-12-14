@@ -214,6 +214,27 @@ export const mockData = {
           "icon": "/sitelogo/www.cloudflare.com.ico"
         },
         {
+          "id": "site-1765689832023",
+          "name": "又拍云",
+          "url": "https://www.upyun.com/",
+          "description": "又拍云（UPYUN）是2014年成立于杭州的云服务提供商，以场景化CDN为核心业务，提供云存储、云处理、云安全及流量营销等服务，其云存储服务自2015年9月1日起向所有用户免费开放。",
+          "icon": "https://ts1.tc.mm.bing.net/th/id/ODF.W98S-x5nX8rGlHQg8N9wng?w=32&h=32&qlt=90&pcl=fffffc&o=6&cb=ucfimg1&pid=1.2&ucfimg=1"
+        },
+        {
+          "id": "site-1765690034284",
+          "name": "七牛云",
+          "url": "https://www.qiniu.com/",
+          "description": "",
+          "icon": "https://ts3.tc.mm.bing.net/th/id/OADD2.1179775990771351_1YR547GNDNF1PQ3?w=32&h=32&o=6&cb=ucfimg1&pid=21.2&ucfimg=1"
+        },
+        {
+          "id": "site-1765690125033",
+          "name": "多吉云",
+          "url": "https://www.dogecloud.com/",
+          "description": "",
+          "icon": "https://www.faviconextractor.com/favicon/www.dogecloud.com"
+        },
+        {
           "id": "site-1764135234960",
           "name": "GoDaddy",
           "url": "https://www.godaddy.com/zh-sg",
