@@ -493,6 +493,13 @@ export const mockData = {
       "order": 10,
       "sites": [
         {
+          "id": "site-1767454229056",
+          "name": "编程导航",
+          "url": "https://codefather.cn/",
+          "description": "程序员一站式编程学习交流社区",
+          "icon": "https://ts1.tc.mm.bing.net/th/id/ODF.vBoY5DrkhOyD54I9D3rKCg?w=32&h=32&qlt=91&pcl=fffffa&o=6&pid=1.2"
+        },
+        {
           "id": "mdn",
           "name": "MDN Web Docs",
           "url": "https://developer.mozilla.org",
