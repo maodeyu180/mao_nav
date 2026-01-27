@@ -29,16 +29,33 @@
   <!-- 正常导航界面 -->
   <div v-else class="nav-home">
     <!-- 左侧边栏 -->
-    <aside class="sidebar">
+   
+      <!-- 左侧边栏 -->
+<aside class="sidebar" :class="{ collapsed: sidebarCollapsed }">
+
       <!-- Logo区域 -->
-      <div class="logo-section">
-        <img src="/logo.png" alt="logo" class="logo" />
-        <h1 class="site-title">{{ title || '猫猫导航' }}</h1>
-      </div>
+     <!-- Logo区域 -->
+<div class="logo-section">
+  <img src="/logo.png" alt="logo" class="logo" />
+  <h1 class="site-title" v-show="!sidebarCollapsed">{{ title || '猫猫导航' }}</h1>
+</div>
+
+<!-- 折叠/展开按钮 -->
+<button class="sidebar-toggle-btn" @click="toggleSidebar" :title="sidebarCollapsed ? '展开侧边栏' : '收起侧边栏'">
+  <svg v-if="!sidebarCollapsed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M15 18L9 12L15 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M9 18L15 12L9 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
 
       <!-- 分类导航 -->
-      <nav class="category-nav">
-        <h2 class="nav-title">分类导航</h2>
+     <!-- 分类导航 -->
+<nav class="category-nav">
+  <h2 class="nav-title" v-show="!sidebarCollapsed">分类导航</h2>
+
                 <ul class="category-list">
           <li
             v-for="category in categories"
@@ -47,13 +64,13 @@
             @click="scrollToCategory(category.id)"
           >
             <span class="category-icon">{{ category.icon }}</span>
-            <span class="category-name">{{ category.name }}</span>
+            <span class="category-name" v-show="!sidebarCollapsed">{{ category.name }}</span>
           </li>
         </ul>
       </nav>
 
       <!-- 左侧边栏底部信息 -->
-      <div class="sidebar-footer">
+      <div class="sidebar-footer" v-show="!sidebarCollapsed">
         <a
           href="https://github.com/DD-lgtm66/mao_nav"
           target="_blank"
@@ -239,6 +256,15 @@ const searchQuery = ref('') // 搜索查询
 const selectedEngine = ref('bing') // 选中的搜索引擎，初始值会在组件挂载后更新
 const showMobileMenu = ref(false) // 移动端菜单显示状态
 
+// 侧边栏折叠状态
+const sidebarCollapsed = ref(false)
+
+// 切换侧边栏折叠状态
+const toggleSidebar = () => {
+  sidebarCollapsed.value = !sidebarCollapsed.value
+}
+
+  
 // 锁定功能相关
 const isLocked = ref(false) // 是否启用锁定功能
 const isUnlocked = ref(false) // 是否已解锁
@@ -541,6 +567,7 @@ onUnmounted(() => {
 }
 
 /* 左侧边栏样式 */
+/* 左侧边栏样式 */
 .sidebar {
   width: 280px;
   background-color: #2c3e50;
@@ -550,7 +577,69 @@ onUnmounted(() => {
   height: 100vh;
   overflow: hidden;
   flex-shrink: 0;
+  transition: width 0.3s ease;
+  position: relative;
 }
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar.collapsed .logo {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .category-icon {
+  margin-right: 0;
+  font-size: 20px;
+}
+
+.sidebar.collapsed .category-item {
+  justify-content: center;
+  padding: 12px 10px;
+}
+
+.sidebar.collapsed .logo-section {
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* 侧边栏折叠按钮 */
+.sidebar-toggle-btn {
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 48px;
+  background: #2c3e50;
+  border: 2px solid #34495e;
+  border-radius: 0 8px 8px 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  padding: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #34495e;
+  border-color: #3498db;
+  transform: translateY(-50%) translateX(2px);
+}
+
+.sidebar-toggle-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover svg {
+  transform: scale(1.2);
+}
+
 
 .logo-section {
   display: flex;
@@ -1281,6 +1370,18 @@ onUnmounted(() => {
   background-color: #1e293b;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
+
+/* 添加这段 */
+.dark .sidebar-toggle-btn {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .sidebar-toggle-btn:hover {
+  background: #334155;
+  border-color: #3b82f6;
+}
+
 
 .dark .search-header {
   background: #1e293b;
