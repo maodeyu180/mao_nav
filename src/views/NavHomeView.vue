@@ -70,7 +70,7 @@
       </nav>
 
       <!-- 左侧边栏底部信息 -->
-      <div class="sidebar-footer" v-show="!sidebarCollapsed">
+     <!-- <div class="sidebar-footer" v-show="!sidebarCollapsed">
         <a
           href="https://github.com/DD-lgtm66/mao_nav"
           target="_blank"
@@ -83,7 +83,7 @@
           </svg>
           <span>开源不易，Star一下吧！⭐</span>
         </a>
-      </div>
+      </div> -->
     </aside>
 
     <!-- 右侧主内容区 -->
