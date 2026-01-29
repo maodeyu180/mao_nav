@@ -490,7 +490,7 @@ export const mockData = {
           "id": "site-1769699378049",
           "name": "帅同",
           "url": "https://www.shuaito.baby/",
-          "description": "男同txl论坛，活人较少，资源需要充钱获取，经常换网址。提高警惕，以防被骗。",
+          "description": "男同txl论坛，资源需要充钱，\n经常换网址。提高警惕，以防被骗。",
           "icon": "https://www.faviconextractor.com/favicon/www.shuaito.baby"
         },
         {
@@ -506,6 +506,13 @@ export const mockData = {
           "url": "https://www.stboy.net/",
           "description": "男同txl网站，老牌论坛，资源较少。提高警惕，以防被骗。",
           "icon": "https://www.stboy.net/static/image/common/logo.gif"
+        },
+        {
+          "id": "site-1769700344626",
+          "name": "帅同",
+          "url": "https://www.shuaito.baby/",
+          "description": "男同txl论坛",
+          "icon": "https://www.faviconextractor.com/favicon/www.shuaito.baby"
         }
       ]
     }
