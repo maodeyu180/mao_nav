@@ -409,18 +409,18 @@ export const mockData = {
           "icon": "/bbs/static/image/common/logo.png"
         },
         {
-          "id": "site-1769700091766",
-          "name": "搜同",
-          "url": "https://www.stboy.net/",
-          "description": "老牌男同txl网站",
-          "icon": "/static/image/common/logo.gif"
-        },
-        {
           "id": "site-1769700344626",
           "name": "帅同",
           "url": "https://www.shuaito.baby/",
           "description": "男同txl论坛 需钱",
           "icon": "https://www.faviconextractor.com/favicon/www.shuaito.baby"
+        },
+        {
+          "id": "site-1769700091766",
+          "name": "搜同",
+          "url": "https://www.stboy.net/",
+          "description": "老牌男同txl网站",
+          "icon": "/static/image/common/logo.gif"
         }
       ]
     }
