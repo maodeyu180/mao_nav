@@ -48,27 +48,6 @@ export const mockData = {
           "url": "https://claude.ai",
           "description": "Anthropic AI助手",
           "icon": "/sitelogo/claude.ai.ico"
-        },
-        {
-          "id": "midjourney",
-          "name": "Midjourney",
-          "url": "https://www.midjourney.com",
-          "description": "AI图像生成工具",
-          "icon": "/sitelogo/www.midjourney.com.ico"
-        },
-        {
-          "id": "copilot",
-          "name": "GitHub Copilot",
-          "url": "https://github.com/features/copilot",
-          "description": "AI代码助手",
-          "icon": "/sitelogo/github.com.ico"
-        },
-        {
-          "id": "cursor",
-          "name": "Cursor",
-          "url": "https://cursor.sh",
-          "description": "AI代码编辑器",
-          "icon": "/sitelogo/cursor.sh.ico"
         }
       ]
     },
@@ -91,13 +70,6 @@ export const mockData = {
           "url": "https://vercel.com",
           "description": "前端部署平台",
           "icon": "/sitelogo/vercel.com.ico"
-        },
-        {
-          "id": "aws",
-          "name": "AWS",
-          "url": "https://aws.amazon.com",
-          "description": "亚马逊云服务",
-          "icon": "/sitelogo/aws.amazon.com.ico"
         },
         {
           "id": "site-1752644060499",
@@ -127,27 +99,6 @@ export const mockData = {
           "url": "https://code.visualstudio.com",
           "description": "代码编辑器",
           "icon": "/sitelogo/code.visualstudio.com.ico"
-        },
-        {
-          "id": "webstorm",
-          "name": "WebStorm",
-          "url": "https://www.jetbrains.com/webstorm/",
-          "description": "专业前端IDE",
-          "icon": "/sitelogo/www.jetbrains.com.ico"
-        },
-        {
-          "id": "postman",
-          "name": "Postman",
-          "url": "https://www.postman.com",
-          "description": "API测试工具",
-          "icon": "/sitelogo/www.postman.com.ico"
-        },
-        {
-          "id": "android-studio",
-          "name": "Android Studio",
-          "url": "https://developer.android.com/studio",
-          "description": "Android官方开发工具",
-          "icon": "/sitelogo/developer.android.com.ico"
         },
         {
           "id": "oracle-java",
