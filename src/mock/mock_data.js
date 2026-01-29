@@ -499,6 +499,13 @@ export const mockData = {
           "url": "https://www.tt1069.com/",
           "description": "中文繁体的男同txl论坛，貌似是台湾的（不确定）。提高警惕，以防被骗。",
           "icon": "https://www.tt1069.com/bbs/static/image/common/logo.png"
+        },
+        {
+          "id": "site-1769700091766",
+          "name": "搜同",
+          "url": "https://www.stboy.net/",
+          "description": "男同txl网站，老牌论坛，资源较少。提高警惕，以防被骗。",
+          "icon": "https://www.stboy.net/static/image/common/logo.gif"
         }
       ]
     }
