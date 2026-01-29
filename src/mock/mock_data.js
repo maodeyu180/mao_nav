@@ -479,8 +479,15 @@ export const mockData = {
           "icon": "/sitelogo/www.feishu.cn.ico"
         }
       ]
+    },
+    {
+      "id": "category-1769673207768",
+      "icon": "🌈",
+      "name": "彩虹网站",
+      "order": 1,
+      "sites": []
     }
   ],
   "title": "彩虹导航🌈",
-  "_fileSha": "ea3f00cba99e7d9e1d5cb7b816f6a7836b8c233e"
+  "search": "bing"
 }
