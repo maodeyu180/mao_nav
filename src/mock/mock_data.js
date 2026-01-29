@@ -485,7 +485,22 @@ export const mockData = {
       "icon": "🌈",
       "name": "彩虹网站",
       "order": 1,
-      "sites": []
+      "sites": [
+        {
+          "id": "site-1769699378049",
+          "name": "帅同",
+          "url": "https://www.shuaito.baby/",
+          "description": "男同txl论坛，活人较少，资源需要充钱获取，经常换网址。提高警惕，以防被骗。",
+          "icon": "https://www.faviconextractor.com/favicon/www.shuaito.baby"
+        },
+        {
+          "id": "site-1769699543779",
+          "name": "tt1069",
+          "url": "https://www.tt1069.com/",
+          "description": "中文繁体的男同txl论坛，貌似是台湾的（不确定）。提高警惕，以防被骗。",
+          "icon": "https://www.tt1069.com/bbs/static/image/common/logo.png"
+        }
+      ]
     }
   ],
   "title": "彩虹导航🌈",
