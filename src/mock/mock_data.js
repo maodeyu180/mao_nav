@@ -304,7 +304,7 @@ export const mockData = {
         },
         {
           "id": "site-1769700344626",
-          "name": "帅同",
+          "name": "帅同/帅兔",
           "url": "https://www.shuaito.baby/",
           "description": "男同txl论坛 需钱",
           "icon": "https://www.faviconextractor.com/favicon/www.shuaito.baby"
