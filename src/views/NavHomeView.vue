@@ -780,12 +780,14 @@ onUnmounted(() => {
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
+  min-width: 0; /* 关键：允许内部元素收缩 */
 }
 
 @media (max-width: 768px) {
   .search-container {
     margin: 0;
     max-width: none;
+	min-width: 0; /* 关键：允许内部元素收缩 */
   }
 }
 
@@ -831,6 +833,11 @@ onUnmounted(() => {
   font-size: 16px;
   outline: none;
   background: white;
+  min-width: 0; /* 关键：否则内容长会把旁边元素挤掉 */
+  
+  width: auto; /* 如果你原来是 100%，一定要改掉 */
+  
+
 }
 
 .search-input::placeholder {
