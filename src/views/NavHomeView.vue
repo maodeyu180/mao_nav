@@ -90,6 +90,10 @@
     <main class="main-content">
                   <!-- 顶部搜索栏 -->
       <header class="search-header">
+		  <!-- 20260130加入logo -->
+		   <div class="header-logo-mobile">
+		      <img src="/logo.png" alt="logo" class="mobile-header-logo" />
+		    </div>
         <div class="search-container">
           <div class="search-engine-selector">
             <img :src="searchEngines[selectedEngine].icon" :alt="selectedEngine" class="engine-logo" />
@@ -765,6 +769,8 @@ onUnmounted(() => {
   gap: 15px;
 }
 
+
+
 .search-container {
   display: flex;
   max-width: 600px;
@@ -1230,6 +1236,12 @@ onUnmounted(() => {
   opacity: 0.8;
 }
 
+/* 移动端顶部 Logo */
+.header-logo-mobile {
+  display: none;
+}
+
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .nav-home {
@@ -1241,7 +1253,22 @@ onUnmounted(() => {
 
   .sidebar {
     display: none; /* 在移动端隐藏左侧边栏 */
+	
+	
   }
+  /* 在这里添加 */
+    .header-logo-mobile {
+      display: block;
+      margin-right: 12px;
+    }
+    
+    .mobile-header-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    /* 添加结束 */
+  
 
   .main-content {
     flex: 1;
