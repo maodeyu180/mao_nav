@@ -7,13 +7,6 @@ export const mockData = {
       "order": 0,
       "sites": [
         {
-          "id": "site-1752649007053",
-          "name": "BeJson",
-          "url": "https://www.bejson.com/",
-          "description": "工具大全",
-          "icon": "/sitelogo/www.bejson.com.ico"
-        },
-        {
           "id": "linux-do",
           "name": "Linux.do",
           "url": "https://linux.do",
@@ -482,5 +475,5 @@ export const mockData = {
     }
   ],
   "title": "猫猫导航🐱",
-  "_fileSha": "b03d0407ec06ac7f254abf6645ac0425a8e74a92"
+  "search": "bing"
 }
