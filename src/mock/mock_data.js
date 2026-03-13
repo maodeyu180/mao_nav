@@ -55,6 +55,13 @@ export const mockData = {
           "url": "https://skyris.ota.com",
           "description": "OTA更新服务",
           "icon": "📲"
+        },
+        {
+          "id": "site-1773385457319",
+          "name": "禅道",
+          "url": "https://zentao.skyrisai.com:8080/zentao",
+          "description": "项目管理",
+          "icon": " https://zentao.skyrisai.com:8080/zentao/favicon.ico"
         }
       ]
     },
