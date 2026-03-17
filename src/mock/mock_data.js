@@ -81,28 +81,28 @@ export const mockData = {
         {
           "id": "nezha",
           "name": "哪吒监控",
-          "url": "https://nezha.skyrisai.com",
+          "url": "http://nezha.skyrisai.com:8008",
           "description": "服务器状态监控",
           "icon": "📡"
         },
         {
           "id": "pve1",
           "name": "PVE1",
-          "url": "https://pve1.skyrisai.com",
+          "url": "https://pve1.skyrisai.com:8006",
           "description": "Proxmox虚拟化节点1",
           "icon": "🖥️"
         },
         {
           "id": "pve2",
           "name": "PVE2",
-          "url": "https://pve2.skyrisai.com",
+          "url": "https://pve2.skyrisai.com:8006",
           "description": "Proxmox虚拟化节点2",
           "icon": "🖥️"
         },
         {
           "id": "pve3",
           "name": "PVE3",
-          "url": "https://pve3.skyrisai.com",
+          "url": "https://pve3.skyrisai.com:8006",
           "description": "Proxmox虚拟化节点3",
           "icon": "🖥️"
         },
