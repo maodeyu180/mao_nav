@@ -125,7 +125,14 @@ export const mockData = {
           "name": "FNOS",
           "url": "https://web.skyrisai.com:5667",
           "description": "NAS网络存储",
-          "icon": "🗄️"
+          "icon": "https://www.fnnas.com/favicon.ico"
+        },
+        {
+          "id": "site-1774853270731",
+          "name": "路由系统",
+          "url": "https://router.skyrisai.com",
+          "description": "路由器",
+          "icon": " https://downloads.immortalwrt.org/favicon.ico"
         }
       ]
     },
