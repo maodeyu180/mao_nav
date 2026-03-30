@@ -143,6 +143,21 @@ export const mockData = {
           "icon": "☁️"
         }
       ]
+    },
+    {
+      "id": "category-1774850620561",
+      "icon": "🌐",
+      "name": "VPN中的服务",
+      "order": 0,
+      "sites": [
+        {
+          "id": "site-1774850681572",
+          "name": "IndexTTS2 - 情感可控的零样本语音合成",
+          "url": "http://10.20.0.2:7870/",
+          "description": "algo服务器中的语音合成系统",
+          "icon": ""
+        }
+      ]
     }
   ],
   "title": "Skyris 内部导航",
