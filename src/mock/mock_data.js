@@ -40,14 +40,14 @@ export const mockData = {
           "name": "Git仓库",
           "url": "https://git.skyrisai.com",
           "description": "代码托管平台",
-          "icon": "🔀"
+          "icon": "https://cdn.cookielaw.org/logos/aa14a5c8-79e3-442a-8177-464ad850b19d/e46c1d0d-1f66-481f-bc06-5427671431da/253e6fee-c4c0-4b60-bc35-79cdae5dda32/gitlab-logo-100.png"
         },
         {
           "id": "harbor",
           "name": "Harbor",
           "url": "https://harbor.skyrisai.com",
           "description": "容器镜像仓库",
-          "icon": "🐳"
+          "icon": "https://goharbor.io/favicon.svg"
         },
         {
           "id": "skyris-ota",
