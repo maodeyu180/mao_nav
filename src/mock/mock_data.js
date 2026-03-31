@@ -62,6 +62,13 @@ export const mockData = {
           "url": "https://zentao.skyrisai.com:8080/zentao",
           "description": "项目管理",
           "icon": " https://zentao.skyrisai.com:8080/zentao/favicon.ico"
+        },
+        {
+          "id": "site-1774948824063",
+          "name": "固件管理",
+          "url": "http://hidreamlab.club/skyris_ota",
+          "description": "固件管理站点",
+          "icon": ""
         }
       ]
     },
