@@ -420,6 +420,13 @@ export const mockData = {
           "url": "https://www.jikeyunsou.com/index.html",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1775126481151",
+          "name": "PubScholar公益学术平台",
+          "url": "https://pubscholar.cn/",
+          "description": "",
+          "icon": ""
         }
       ]
     }
