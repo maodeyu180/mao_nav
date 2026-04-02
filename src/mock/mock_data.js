@@ -326,6 +326,13 @@ export const mockData = {
           "url": "https://swapco.de/faker",
           "description": "虚拟地址生成",
           "icon": ""
+        },
+        {
+          "id": "site-1775126427725",
+          "name": "FinalShell离线激活工具",
+          "url": "https://www.aristore.top/posts/FinalShell/",
+          "description": "4.5及以后的版本该工具已不适用",
+          "icon": "https://www.faviconextractor.com/favicon/www.aristore.top"
         }
       ]
     },
