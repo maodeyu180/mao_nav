@@ -255,6 +255,13 @@ export const mockData = {
           "url": "https://xiaoshuai.site/xiaoshuai",
           "description": "",
           "icon": "https://www.faviconextractor.com/favicon/xiaoshuai.site"
+        },
+        {
+          "id": "site-1775127267612",
+          "name": "免费模板库",
+          "url": "https://www.rtemplate.cn/",
+          "description": "免费模板库·全模板合集\n全面覆盖各类场景，永久免费",
+          "icon": "https://www.faviconextractor.com/favicon/www.rtemplate.cn"
         }
       ]
     },
