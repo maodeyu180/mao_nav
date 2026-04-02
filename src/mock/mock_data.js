@@ -270,6 +270,13 @@ export const mockData = {
           "url": "https://www.diffchecker.com/",
           "description": "文本文档比较",
           "icon": "https://www.faviconextractor.com/favicon/www.diffchecker.com"
+        },
+        {
+          "id": "site-1775124579801",
+          "name": "namebeta",
+          "url": "https://namebeta.com/zh",
+          "description": "域名检索 比价",
+          "icon": "https://www.faviconextractor.com/favicon/namebeta.com"
         }
       ]
     },
