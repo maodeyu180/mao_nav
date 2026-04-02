@@ -234,6 +234,20 @@ export const mockData = {
           "url": "https://yibao.233h.com/",
           "description": "一站式医保政策查询平台，让医保使用更简单",
           "icon": "https://www.faviconextractor.com/favicon/yibao.233h.com"
+        },
+        {
+          "id": "site-1775126916705",
+          "name": "签证信息列举",
+          "url": "https://visalist.io/",
+          "description": "",
+          "icon": "https://www.faviconextractor.com/favicon/visalist.io"
+        },
+        {
+          "id": "site-1775127053283",
+          "name": "classcentral",
+          "url": "https://www.classcentral.com/",
+          "description": "找到最好的课程，无论它们在哪里",
+          "icon": "https://www.faviconextractor.com/favicon/www.classcentral.com"
         }
       ]
     },
