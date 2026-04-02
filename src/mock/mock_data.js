@@ -382,6 +382,20 @@ export const mockData = {
           "url": "https://pan.xiaozi.cc/",
           "description": "免费网盘资源搜索引擎",
           "icon": "https://www.faviconextractor.com/favicon/pan.xiaozi.cc"
+        },
+        {
+          "id": "site-1775140697830",
+          "name": "WisPaper",
+          "url": "https://www.wispaper.ai/zh",
+          "description": "WisPaper: 你的AI 学术搜索引擎\n支持自然语言提问。AI 深度理解您的意图，通过全文检索，为您精准锁定所有匹配的论文。",
+          "icon": ""
+        },
+        {
+          "id": "site-1775141333519",
+          "name": "PanSou盘搜",
+          "url": "https://ps.252035.xyz/",
+          "description": "",
+          "icon": ""
         }
       ]
     },
