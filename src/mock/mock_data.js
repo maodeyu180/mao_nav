@@ -34,22 +34,7 @@ export const mockData = {
       "name": "AI智能",
       "icon": "🤖",
       "order": 1,
-      "sites": [
-        {
-          "id": "chatgpt",
-          "name": "ChatGPT",
-          "url": "https://chat.openai.com",
-          "description": "OpenAI对话AI助手",
-          "icon": "/sitelogo/chat.openai.com.ico"
-        },
-        {
-          "id": "claude",
-          "name": "Claude",
-          "url": "https://claude.ai",
-          "description": "Anthropic AI助手",
-          "icon": "/sitelogo/claude.ai.ico"
-        }
-      ]
+      "sites": []
     },
     {
       "id": "cloud",
