@@ -427,6 +427,20 @@ export const mockData = {
           "url": "https://pubscholar.cn/",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1775126654556",
+          "name": "盘了个盘",
+          "url": "https://www.panlegepan.com/",
+          "description": "网盘搜索",
+          "icon": "https://www.faviconextractor.com/favicon/www.panlegepan.com"
+        },
+        {
+          "id": "site-1775126700280",
+          "name": "盘小子",
+          "url": "https://pan.xiaozi.cc/",
+          "description": "免费网盘资源搜索引擎",
+          "icon": "https://www.faviconextractor.com/favicon/pan.xiaozi.cc"
         }
       ]
     }
