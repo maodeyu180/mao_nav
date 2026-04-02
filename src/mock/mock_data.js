@@ -227,6 +227,13 @@ export const mockData = {
           "url": "https://my.feishu.cn/wiki/PPZJwMLrdiurDikOibaced48nFd",
           "description": "某人飞书文档资源",
           "icon": ""
+        },
+        {
+          "id": "site-1775125597924",
+          "name": "医保政策导航",
+          "url": "https://yibao.233h.com/",
+          "description": "一站式医保政策查询平台，让医保使用更简单",
+          "icon": "https://www.faviconextractor.com/favicon/yibao.233h.com"
         }
       ]
     },
