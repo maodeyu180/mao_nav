@@ -220,6 +220,13 @@ export const mockData = {
           "url": "https://free-for.dev/#/",
           "description": "英文免费工具文档",
           "icon": "https://www.faviconextractor.com/favicon/free-for.dev"
+        },
+        {
+          "id": "site-1775124758105",
+          "name": "某人飞书文档资源",
+          "url": "https://my.feishu.cn/wiki/PPZJwMLrdiurDikOibaced48nFd",
+          "description": "某人飞书文档资源",
+          "icon": ""
         }
       ]
     },
