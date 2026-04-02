@@ -199,6 +199,13 @@ export const mockData = {
           "url": "https://wiki.metacubex.one/startup/client/client/",
           "description": "多平台FQ工具",
           "icon": "https://www.faviconextractor.com/favicon/wiki.metacubex.one"
+        },
+        {
+          "id": "site-1775122057604",
+          "name": "果核剥壳",
+          "url": "https://www.ghxi.com/",
+          "description": "破解软件",
+          "icon": ""
         }
       ]
     },
