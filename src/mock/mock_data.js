@@ -262,6 +262,13 @@ export const mockData = {
           "url": "https://www.rtemplate.cn/",
           "description": "免费模板库·全模板合集\n全面覆盖各类场景，永久免费",
           "icon": "https://www.faviconextractor.com/favicon/www.rtemplate.cn"
+        },
+        {
+          "id": "site-1775128071330",
+          "name": "软仓",
+          "url": "https://www.ruancang.net/",
+          "description": "免费应用程序资源",
+          "icon": "https://www.faviconextractor.com/favicon/www.ruancang.net"
         }
       ]
     },
@@ -476,13 +483,35 @@ export const mockData = {
           "url": "https://pan.xiaozi.cc/",
           "description": "免费网盘资源搜索引擎",
           "icon": "https://www.faviconextractor.com/favicon/pan.xiaozi.cc"
-        },
+        }
+      ]
+    },
+    {
+      "id": "category-1775127814766",
+      "icon": "📚",
+      "name": "阅读网站",
+      "order": 0,
+      "sites": [
         {
           "id": "site-1775127662610",
           "name": "书格",
           "url": "https://www.shuge.org/",
           "description": "书格是一个自由开放的数字图书馆。致力于开放式分享、介绍、推荐有价值的古籍善本、字画，并鼓励将文化艺术作品数字化归档",
           "icon": "https://www.faviconextractor.com/favicon/www.shuge.org"
+        },
+        {
+          "id": "site-1775127871353",
+          "name": "经典书库",
+          "url": "https://www.jingdianbook.com/",
+          "description": "",
+          "icon": "https://www.faviconextractor.com/favicon/www.jingdianbook.com"
+        },
+        {
+          "id": "site-1775127935404",
+          "name": "WeLib",
+          "url": "https://zh.welib.org/",
+          "description": "4300万本书和9800万篇文章。自由阅读，加入我们共建更加开明的未来",
+          "icon": "https://www.faviconextractor.com/favicon/zh.welib.org"
         }
       ]
     }
