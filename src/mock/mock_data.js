@@ -249,6 +249,13 @@ export const mockData = {
           "url": "https://tinypng.com",
           "description": "图片压缩工具",
           "icon": "/sitelogo/tinypng.com.ico"
+        },
+        {
+          "id": "site-1775123229415",
+          "name": "立即移除付费墙",
+          "url": "https://paywallbuster.com/",
+          "description": "输入文章解锁 没用过",
+          "icon": "https://www.faviconextractor.com/favicon/paywallbuster.com"
         }
       ]
     },
