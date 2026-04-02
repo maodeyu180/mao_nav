@@ -386,6 +386,21 @@ export const mockData = {
           "icon": "/static/image/common/logo.gif"
         }
       ]
+    },
+    {
+      "id": "category-1775125720326",
+      "icon": "🔍",
+      "name": "搜索网站",
+      "order": 0,
+      "sites": [
+        {
+          "id": "site-1775125742720",
+          "name": "极刻云搜",
+          "url": "https://www.jikeyunsou.com/index.html",
+          "description": "",
+          "icon": ""
+        }
+      ]
     }
   ],
   "title": "彩虹导航🌈",
