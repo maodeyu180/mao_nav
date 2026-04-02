@@ -207,6 +207,13 @@ export const mockData = {
           "url": "https://www.coursera.org",
           "description": "在线课程平台",
           "icon": "/sitelogo/www.coursera.org.ico"
+        },
+        {
+          "id": "site-1775120934397",
+          "name": " 虚空终端",
+          "url": "https://wiki.metacubex.one/startup/client/client/",
+          "description": "多平台FQ工具",
+          "icon": "https://www.faviconextractor.com/favicon/wiki.metacubex.one"
         }
       ]
     },
