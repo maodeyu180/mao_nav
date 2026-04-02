@@ -154,6 +154,20 @@ export const mockData = {
           "url": "https://www.ruancang.net/",
           "description": "免费应用程序资源",
           "icon": "https://www.faviconextractor.com/favicon/www.ruancang.net"
+        },
+        {
+          "id": "site-1775139812664",
+          "name": "行书指南",
+          "url": "https://xszn.org/",
+          "description": "免费和开源软件列表",
+          "icon": "https://www.faviconextractor.com/favicon/xszn.org"
+        },
+        {
+          "id": "site-1775140190290",
+          "name": "Mind Luster ",
+          "url": "https://www.mindluster.com/",
+          "description": "Mind Luster - 300,000门在线课程和MOOC\n一站式免费证书 ",
+          "icon": "https://www.faviconextractor.com/favicon/www.mindluster.com"
         }
       ]
     },
@@ -397,6 +411,13 @@ export const mockData = {
           "url": "https://zh.welib.org/",
           "description": "4300万本书和9800万篇文章。自由阅读，加入我们共建更加开明的未来",
           "icon": "https://www.faviconextractor.com/favicon/zh.welib.org"
+        },
+        {
+          "id": "site-1775140240763",
+          "name": "阅读",
+          "url": "https://openbookshongkong.com/book/",
+          "description": "本平台所有圖書均採用創用CC授權條款 CC BY-NC-ND 4.0。歡迎以任何媒介或形式自由分享、傳播圖書內容，但僅限於非商業用途，且須註明作者姓名及保持圖書的原始形式。",
+          "icon": "https://www.faviconextractor.com/favicon/openbookshongkong.com"
         }
       ]
     }
