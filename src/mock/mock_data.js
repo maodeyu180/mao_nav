@@ -213,6 +213,13 @@ export const mockData = {
           "url": "https://fontmeme.com/zh/",
           "description": "字体站",
           "icon": "https://www.faviconextractor.com/favicon/fontmeme.com"
+        },
+        {
+          "id": "site-1775124127276",
+          "name": "free-for.dev",
+          "url": "https://free-for.dev/#/",
+          "description": "英文免费工具文档",
+          "icon": "https://www.faviconextractor.com/favicon/free-for.dev"
         }
       ]
     },
