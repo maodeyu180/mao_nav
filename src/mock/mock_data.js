@@ -248,6 +248,13 @@ export const mockData = {
           "url": "https://www.classcentral.com/",
           "description": "找到最好的课程，无论它们在哪里",
           "icon": "https://www.faviconextractor.com/favicon/www.classcentral.com"
+        },
+        {
+          "id": "site-1775127146454",
+          "name": "小帅同学资源站",
+          "url": "https://xiaoshuai.site/xiaoshuai",
+          "description": "",
+          "icon": "https://www.faviconextractor.com/favicon/xiaoshuai.site"
         }
       ]
     },
@@ -347,6 +354,13 @@ export const mockData = {
           "url": "https://www.aristore.top/posts/FinalShell/",
           "description": "4.5及以后的版本该工具已不适用",
           "icon": "https://www.faviconextractor.com/favicon/www.aristore.top"
+        },
+        {
+          "id": "site-1775127178968",
+          "name": "WeChat2PDF",
+          "url": "https://www.wechat2pdf.com/",
+          "description": "微信公众号/订阅号文章在线导出/转换为PDF ",
+          "icon": ""
         }
       ]
     },
