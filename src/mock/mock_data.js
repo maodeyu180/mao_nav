@@ -206,6 +206,13 @@ export const mockData = {
           "url": "https://www.ghxi.com/",
           "description": "破解软件",
           "icon": ""
+        },
+        {
+          "id": "site-1775123116237",
+          "name": "fontmeme",
+          "url": "https://fontmeme.com/zh/",
+          "description": "字体站",
+          "icon": "https://www.faviconextractor.com/favicon/fontmeme.com"
         }
       ]
     },
