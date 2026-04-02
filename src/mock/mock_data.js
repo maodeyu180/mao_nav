@@ -284,6 +284,20 @@ export const mockData = {
           "url": "https://namebeta.com/zh",
           "description": "域名检索 比价",
           "icon": "https://www.faviconextractor.com/favicon/namebeta.com"
+        },
+        {
+          "id": "site-1775125390359",
+          "name": "印章生成",
+          "url": "https://xxss0903.github.io/drawstamputils/",
+          "description": "印章生成",
+          "icon": ""
+        },
+        {
+          "id": "site-1775125430363",
+          "name": "手写体文稿生成器 ",
+          "url": "https://vtool.pro/handwriting/index.html",
+          "description": "手写文稿生成",
+          "icon": ""
         }
       ]
     },
