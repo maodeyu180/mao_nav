@@ -319,6 +319,13 @@ export const mockData = {
           "url": "https://webrename.cn/",
           "description": "在线文件批量重命名工具",
           "icon": ""
+        },
+        {
+          "id": "site-1775125870905",
+          "name": "SwapCode",
+          "url": "https://swapco.de/faker",
+          "description": "虚拟地址生成",
+          "icon": ""
         }
       ]
     },
