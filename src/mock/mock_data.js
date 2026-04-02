@@ -476,6 +476,13 @@ export const mockData = {
           "url": "https://pan.xiaozi.cc/",
           "description": "免费网盘资源搜索引擎",
           "icon": "https://www.faviconextractor.com/favicon/pan.xiaozi.cc"
+        },
+        {
+          "id": "site-1775127662610",
+          "name": "书格",
+          "url": "https://www.shuge.org/",
+          "description": "书格是一个自由开放的数字图书馆。致力于开放式分享、介绍、推荐有价值的古籍善本、字画，并鼓励将文化艺术作品数字化归档",
+          "icon": "https://www.faviconextractor.com/favicon/www.shuge.org"
         }
       ]
     }
