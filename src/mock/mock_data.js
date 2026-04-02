@@ -263,6 +263,13 @@ export const mockData = {
           "url": "https://paywallbuster.com/",
           "description": "输入文章解锁 没用过",
           "icon": "https://www.faviconextractor.com/favicon/paywallbuster.com"
+        },
+        {
+          "id": "site-1775124232455",
+          "name": "diffchecker",
+          "url": "https://www.diffchecker.com/",
+          "description": "文本文档比较",
+          "icon": "https://www.faviconextractor.com/favicon/www.diffchecker.com"
         }
       ]
     },
