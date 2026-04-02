@@ -312,6 +312,13 @@ export const mockData = {
           "url": "https://dnd-resume.com/editor",
           "description": "",
           "icon": ""
+        },
+        {
+          "id": "site-1775125831678",
+          "name": " WebRename",
+          "url": "https://webrename.cn/",
+          "description": "在线文件批量重命名工具",
+          "icon": ""
         }
       ]
     },
