@@ -298,6 +298,13 @@ export const mockData = {
           "url": "https://vtool.pro/handwriting/index.html",
           "description": "手写文稿生成",
           "icon": ""
+        },
+        {
+          "id": "site-1775125469664",
+          "name": "在线简历生成",
+          "url": "https://dnd-resume.com/editor",
+          "description": "",
+          "icon": ""
         }
       ]
     },
