@@ -168,6 +168,13 @@ export const mockData = {
           "url": "https://www.mindluster.com/",
           "description": "Mind Luster - 300,000门在线课程和MOOC\n一站式免费证书 ",
           "icon": "https://www.faviconextractor.com/favicon/www.mindluster.com"
+        },
+        {
+          "id": "site-1775185448483",
+          "name": "资源文档",
+          "url": "https://www.kdocs.cn/l/cc9Z30GHXwni",
+          "description": "收集全网最全汁源，想要什么都有，没有的反馈帮找",
+          "icon": "https://www.faviconextractor.com/favicon/www.kdocs.cn"
         }
       ]
     },
