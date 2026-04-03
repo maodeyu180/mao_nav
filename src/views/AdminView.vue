@@ -125,7 +125,7 @@ import CategoryManager from '../components/admin/CategoryManager.vue'
 import SiteManager from '../components/admin/SiteManager.vue'
 import SystemSettings from '../components/admin/SystemSettings.vue'
 import CustomDialog from '../components/admin/CustomDialog.vue'
-import { useGitHubAPI } from '../apis/useGitHubAPI.js'
+import { useGitHubAPI, setAuthToken, clearAuthToken } from '../apis/useGitHubAPI.js'
 
 const router = useRouter()
 const { saveCategoriesToGitHub, loadCategoriesFromGitHub } = useGitHubAPI()
@@ -170,40 +170,41 @@ const dialogTitle = ref('')
 const dialogMessage = ref('')
 const dialogDetails = ref([])
 
-// 验证管理员密钥
+// 验证管理员密钥（通过服务端验证）
 const handleLogin = async () => {
   loading.value = true
   loginError.value = ''
 
   try {
-    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD
-    if (!adminPassword) {
-      throw new Error('管理密钥未配置，请配置环境变量')
+    const response = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: loginPassword.value }),
+    })
+
+    const result = await response.json()
+
+    if (!result.success) {
+      throw new Error(result.error || '验证失败')
     }
 
-    if (loginPassword.value === adminPassword) {
-      isAuthenticated.value = true
-      localStorage.setItem('admin_authenticated', 'true')
+    // Store auth token and mark as authenticated
+    setAuthToken(result.token)
+    isAuthenticated.value = true
+    localStorage.setItem('admin_authenticated', 'true')
 
-      // 登录成功后，不立即加载数据，让用户进入管理界面
-      console.log('登录成功，准备进入管理界面')
-
-      // 延迟加载，避免阻塞登录流程
-      setTimeout(async () => {
-        try {
-          await loadCategories()
-        } catch (error) {
-          console.error('登录后数据加载失败:', error)
-          loading.value = false
-        }
-      }, 500)
-    } else {
-      throw new Error('密钥错误，请重新输入')
-    }
+    // Load data after login
+    setTimeout(async () => {
+      try {
+        await loadCategories()
+      } catch (error) {
+        console.error('登录后数据加载失败:', error)
+        loading.value = false
+      }
+    }, 500)
   } catch (error) {
     loginError.value = error.message
   } finally {
-    // 确保登录流程的loading状态被重置
     if (!isAuthenticated.value) {
       loading.value = false
     }
@@ -214,6 +215,7 @@ const handleLogin = async () => {
 const logout = () => {
   isAuthenticated.value = false
   localStorage.removeItem('admin_authenticated')
+  clearAuthToken()
   loginPassword.value = ''
   router.push('/')
 }
@@ -221,30 +223,24 @@ const logout = () => {
 // 调试加载数据
 const debugLoadData = async () => {
   console.log('=== 开始调试加载数据 ===')
-  console.log('当前环境变量:', {
-    VITE_GITHUB_TOKEN: import.meta.env.VITE_GITHUB_TOKEN ? '已配置' : '未配置',
-    VITE_GITHUB_OWNER: import.meta.env.VITE_GITHUB_OWNER,
-    VITE_GITHUB_REPO: import.meta.env.VITE_GITHUB_REPO,
-    VITE_GITHUB_BRANCH: import.meta.env.VITE_GITHUB_BRANCH
-  })
 
   try {
-    console.log('直接调用loadCategoriesFromGitHub...')
+    console.log('通过代理调用GitHub API...')
     const data = await loadCategoriesFromGitHub()
     console.log('调用成功，返回数据:', data)
 
     showDialog(
       'success',
       '🎉 调试成功',
-      '直接调用GitHub API成功',
+      '通过代理调用GitHub API成功',
       [`• 数据类型: ${typeof data}`, `• 包含categories: ${!!data.categories}`, `• 分类数量: ${data.categories?.length || 0}`]
     )
   } catch (error) {
-    console.error('直接调用失败:', error)
+    console.error('调用失败:', error)
     showDialog(
       'error',
       '❌ 调试失败',
-      '直接调用GitHub API失败',
+      '调用GitHub API失败',
       [`• 错误信息: ${error.message}`, `• 错误类型: ${error.constructor.name}`]
     )
   }
@@ -405,37 +401,27 @@ const emergencyReset = () => {
 
 // 组件挂载时检查认证状态
 onMounted(() => {
-  console.log('🔍 AdminView组件开始挂载')
-
-  // 立即强制重置loading状态，避免卡死
   loading.value = false
 
   const savedAuth = localStorage.getItem('admin_authenticated')
-  if (savedAuth === 'true') {
-    console.log('🔍 检测到已登录状态')
+  const savedToken = localStorage.getItem('admin_token')
+
+  if (savedAuth === 'true' && savedToken) {
     isAuthenticated.value = true
 
-    // 直接使用本地数据，不调用GitHub API
-    console.log('🔍 直接加载本地数据，跳过GitHub API调用')
-    try {
-      // 使用同步方式加载本地数据
-      import('../mock/mock_data.js').then(({ mockData }) => {
-        categories.value = mockData.categories || []
-        navTitle.value = mockData.title || '猫猫导航'
-        console.log('🔍 本地数据加载成功，分类数量:', categories.value.length)
-      }).catch(error => {
-        console.error('🔍 本地数据加载失败:', error)
-        categories.value = []
-        navTitle.value = '猫猫导航'
-      })
-    } catch (error) {
-      console.error('🔍 数据加载异常:', error)
+    // Load local data for initial display
+    import('../mock/mock_data.js').then(({ mockData }) => {
+      categories.value = mockData.categories || []
+      navTitle.value = mockData.title || '猫猫导航'
+    }).catch(() => {
       categories.value = []
       navTitle.value = '猫猫导航'
-    }
+    })
+  } else {
+    // Clean up stale auth state
+    localStorage.removeItem('admin_authenticated')
+    clearAuthToken()
   }
-
-  console.log('🔍 AdminView组件挂载完成')
 })
 </script>
 

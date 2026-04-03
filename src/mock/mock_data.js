@@ -33,7 +33,7 @@ export const mockData = {
       "id": "design",
       "name": "设计工具",
       "icon": "🎨",
-      "order": 4,
+      "order": 6,
       "sites": [
         {
           "id": "canva",
@@ -48,7 +48,7 @@ export const mockData = {
       "id": "learning",
       "name": "学习资源",
       "icon": "📚",
-      "order": 6,
+      "order": 8,
       "sites": [
         {
           "id": "mdn",
@@ -182,7 +182,7 @@ export const mockData = {
       "id": "tools",
       "name": "在线工具",
       "icon": "⚙️",
-      "order": 7,
+      "order": 9,
       "sites": [
         {
           "id": "site-1775128571045",
@@ -295,7 +295,7 @@ export const mockData = {
       "id": "entertainment",
       "name": "娱乐休闲",
       "icon": "🎮",
-      "order": 8,
+      "order": 10,
       "sites": [
         {
           "id": "bilibili",
