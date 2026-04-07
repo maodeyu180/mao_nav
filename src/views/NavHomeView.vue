@@ -55,8 +55,6 @@
       <!-- 左侧边栏底部信息 -->
       <div class="sidebar-footer">
         <a
-          
-          <!-- 修改href="https://github.com/maodeyu180/mao_nav" -->
           href="https://nanyu.xin/"
           target="_blank"
           rel="noopener noreferrer"
