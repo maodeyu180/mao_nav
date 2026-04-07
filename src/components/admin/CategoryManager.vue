@@ -12,58 +12,69 @@
       </div>
     </div>
 
+    <!-- 提示信息 -->
+    <div class="drag-tip">
+      💡 拖拽左侧 <span class="tip-handle">⋮⋮</span> 手柄可调整分类排序，点击分类卡片可进入站点管理
+    </div>
+
     <!-- 分类列表 -->
     <div class="categories-list">
-      <div
-        v-for="(category, index) in localCategories"
-        :key="category.id"
-        class="category-item clickable"
-        @click="$emit('viewSites', category.id)"
+      <draggable
+        v-model="localCategories"
+        v-bind="dragOptions"
+        @end="onDragEnd"
+        item-key="id"
+        tag="div"
+        class="draggable-list"
       >
-        <div class="category-header">
-          <div class="category-info">
-            <span class="category-icon" @click.stop="editCategory(category)">
-              {{ category.icon }}
-            </span>
-            <div class="category-details">
-              <h3 @click.stop="editCategory(category)">{{ category.name }}</h3>
-              <p>{{ category.sites?.length || 0 }} 个站点 → 点击查看站点管理</p>
+        <template #item="{ element: category }">
+          <div
+            class="category-item clickable draggable-item"
+            @click="$emit('viewSites', category.id)"
+          >
+            <div class="category-header">
+              <div class="category-info">
+                <div class="drag-handle" title="拖拽排序" @click.stop>
+                  ⋮⋮
+                </div>
+                <span class="category-icon" @click.stop="editCategory(category)">
+                  {{ category.icon }}
+                </span>
+                <div class="category-details">
+                  <h3 @click.stop="editCategory(category)">{{ category.name }}</h3>
+                  <p>{{ category.sites?.length || 0 }} 个站点 → 点击查看站点管理</p>
+                </div>
+              </div>
+              <div class="category-actions">
+                <span class="order-badge">排序: {{ category.order }}</span>
+                <button @click.stop="editCategory(category)" class="edit-btn">
+                  ✏️ 编辑
+                </button>
+                <button @click.stop="deleteCategory(category.id)" class="delete-btn">
+                  🗑️ 删除
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="category-actions">
-            <span class="order-badge">排序: {{ category.order }}</span>
-            <button @click.stop="moveCategory(index, -1)" :disabled="index === 0" class="move-btn">
-              ⬆️
-            </button>
-            <button @click.stop="moveCategory(index, 1)" :disabled="index === localCategories.length - 1" class="move-btn">
-              ⬇️
-            </button>
-            <button @click.stop="editCategory(category)" class="edit-btn">
-              ✏️ 编辑
-            </button>
-            <button @click.stop="deleteCategory(category.id)" class="delete-btn">
-              🗑️ 删除
-            </button>
-          </div>
-        </div>
 
-        <!-- 站点预览 -->
-        <div class="sites-preview" v-if="category.sites && category.sites.length > 0">
-          <div class="sites-grid">
-            <div
-              v-for="site in category.sites.slice(0, 6)"
-              :key="site.id"
-              class="site-preview"
-            >
-              <img :src="site.icon" :alt="site.name" @error="handleImageError">
-              <span>{{ site.name }}</span>
-            </div>
-            <div v-if="category.sites.length > 6" class="more-sites">
-              +{{ category.sites.length - 6 }} 更多
+            <!-- 站点预览 -->
+            <div class="sites-preview" v-if="category.sites && category.sites.length > 0">
+              <div class="sites-grid">
+                <div
+                  v-for="site in category.sites.slice(0, 6)"
+                  :key="site.id"
+                  class="site-preview"
+                >
+                  <img :src="site.icon" :alt="site.name" @error="handleImageError">
+                  <span>{{ site.name }}</span>
+                </div>
+                <div v-if="category.sites.length > 6" class="more-sites">
+                  +{{ category.sites.length - 6 }} 更多
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </template>
+      </draggable>
     </div>
 
     <!-- 添加/编辑分类弹窗 -->
@@ -131,6 +142,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
+import draggable from 'vuedraggable'
 
 const props = defineProps({
   categories: {
@@ -175,21 +187,24 @@ const syncToParent = () => {
   emit('update', localCategories.value)
 }
 
-// 移动分类
-const moveCategory = (index, direction) => {
-  const newIndex = index + direction
-  if (newIndex < 0 || newIndex >= localCategories.value.length) return
+// 拖拽排序配置
+const dragOptions = {
+  animation: 200,
+  handle: '.drag-handle',
+  ghostClass: 'sortable-ghost',
+  chosenClass: 'sortable-chosen',
+  scroll: true,
+  forceAutoScrollFallback: true,
+  scrollSensitivity: 100,
+  scrollSpeed: 15
+}
 
-  const categories = [...localCategories.value]
-  const item = categories.splice(index, 1)[0]
-  categories.splice(newIndex, 0, item)
-
+// 拖拽结束
+const onDragEnd = () => {
   // 重新排序
-  categories.forEach((category, idx) => {
+  localCategories.value.forEach((category, idx) => {
     category.order = idx
   })
-
-  localCategories.value = categories
   syncToParent()
 }
 
@@ -275,6 +290,25 @@ const handleImageError = (event) => {
   font-size: 24px;
 }
 
+.drag-tip {
+  background: #ebf5fb;
+  border: 1px solid #aed6f1;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  color: #2980b9;
+  font-size: 14px;
+}
+
+.tip-handle {
+  display: inline-block;
+  background: #d5e8f5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .header-actions {
   display: flex;
   gap: 15px;
@@ -313,6 +347,12 @@ const handleImageError = (event) => {
 }
 
 .categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.draggable-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -393,7 +433,7 @@ const handleImageError = (event) => {
   font-weight: 500;
 }
 
-.move-btn, .edit-btn, .delete-btn {
+.edit-btn, .delete-btn {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
@@ -402,18 +442,35 @@ const handleImageError = (event) => {
   transition: all 0.3s ease;
 }
 
-.move-btn {
-  background: #95a5a6;
-  color: white;
+.drag-handle {
+  cursor: grab;
+  font-size: 18px;
+  color: #95a5a6;
+  user-select: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  line-height: 1;
 }
 
-.move-btn:hover:not(:disabled) {
-  background: #7f8c8d;
+.drag-handle:hover {
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
 }
 
-.move-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+  border: 2px dashed #3498db !important;
+  background: #ebf5fb !important;
+}
+
+.sortable-chosen {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: rotate(1deg);
 }
 
 .edit-btn {

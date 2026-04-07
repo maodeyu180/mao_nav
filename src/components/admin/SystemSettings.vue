@@ -138,38 +138,37 @@
       <h3>🌍 环境变量配置</h3>
       <div class="env-config">
         <div class="config-item">
-          <label>管理员密钥 (VITE_ADMIN_PASSWORD):</label>
+          <label>管理员密钥 (ADMIN_PASSWORD):</label>
           <div class="config-value">
-            <span v-if="envConfig.adminPassword" class="value-set">✅ 已配置</span>
-            <span v-else class="value-missing">❌ 未配置</span>
+            <span class="value-set">🔒 服务端配置（前端不可见）</span>
           </div>
         </div>
         <div class="config-item">
-          <label>GitHub Token (VITE_GITHUB_TOKEN):</label>
+          <label>GitHub Token (GITHUB_TOKEN):</label>
           <div class="config-value">
-            <span v-if="envConfig.githubToken" class="value-set">✅ 已配置</span>
-            <span v-else class="value-missing">❌ 未配置</span>
+            <span class="value-set">🔒 服务端配置（前端不可见）</span>
           </div>
         </div>
         <div class="config-item">
           <label>GitHub 仓库所有者 (VITE_GITHUB_OWNER):</label>
           <div class="config-value">
-            <span class="value-display">{{ envConfig.githubOwner || '默认: maodeyu180' }}</span>
+            <span class="value-display">{{ envConfig.githubOwner || '未配置' }}</span>
           </div>
         </div>
         <div class="config-item">
           <label>GitHub 仓库名称 (VITE_GITHUB_REPO):</label>
           <div class="config-value">
-            <span class="value-display">{{ envConfig.githubRepo || '默认: mao_nav' }}</span>
+            <span class="value-display">{{ envConfig.githubRepo || '未配置' }}</span>
           </div>
         </div>
         <div class="config-item">
           <label>GitHub 分支 (VITE_GITHUB_BRANCH):</label>
           <div class="config-value">
-            <span class="value-display">{{ envConfig.githubBranch || '默认: master' }}</span>
+            <span class="value-display">{{ envConfig.githubBranch || 'master' }}</span>
           </div>
         </div>
       </div>
+      <p class="env-hint">密钥类配置（ADMIN_PASSWORD、GITHUB_TOKEN）存储在服务端，前端代码不包含任何敏感信息。仓库信息为公开数据，可安全展示。</p>
     </div>
 
     <!-- 配置说明 -->
@@ -206,33 +205,30 @@
         <div class="guide-step">
           <h4>2. 配置环境变量</h4>
           <p>
-            <strong>如果你在 <span style="color:#3498db">自己的服务器</span> 部署：</strong><br>
-            在项目根目录创建 <code>.env</code> 文件，添加以下配置：
-          </p>
-          <p>
-            <strong>如果你使用 <span style="color:#27ae60">Vercel</span> 或 <span style="color:#f39c12">Cloudflare Pages</span> 部署：</strong><br>
-            请在对应平台的「环境变量」设置界面，添加下方这些变量，无需在项目中创建 <code>.env</code> 文件。
+            在部署平台（Cloudflare Pages / Vercel）的「环境变量」设置中添加：
           </p>
           <div class="code-block">
-            <pre><code># 管理员密钥（自定义）
-VITE_ADMIN_PASSWORD=your_admin_password_here
+            <pre><code># === 服务端密钥（不加 VITE_ 前缀，前端不可见）===
+ADMIN_PASSWORD=your_admin_password_here
+GITHUB_TOKEN=your_github_token_here
 
-# GitHub Token
-VITE_GITHUB_TOKEN=your_github_token_here
-# Github 仓库所有者
+# === 前端配置（VITE_ 前缀，构建时注入）===
 VITE_GITHUB_OWNER=your_github_owner_here
 VITE_GITHUB_REPO=your_github_repo_here
-VITE_GITHUB_BRANCH=your_github_branch_here</code></pre>
+VITE_GITHUB_BRANCH=master</code></pre>
           </div>
+          <p style="color:#27ae60;font-weight:500;">
+            密钥类变量存储在服务端，仓库信息为公开数据可安全暴露。同时支持 Cloudflare Pages 和 Vercel 部署。
+          </p>
         </div>
 
         <div class="guide-step">
-          <h4>3. 安全注意事项</h4>
+          <h4>3. 安全说明</h4>
           <ul>
-            <li>🔒 <strong>不要</strong>将 <code>.env</code> 文件提交到 Git 仓库</li>
-            <li>🔑 GitHub Token 具有写入权限，请妥善保管</li>
-            <li>🚫 定期更新和轮换 Token</li>
-            <li>📝 在生产环境中，建议使用更安全的密钥管理方案</li>
+            <li>🔒 所有密钥通过 CF Pages Functions 在服务端使用，前端代码不包含任何敏感信息</li>
+            <li>🔑 管理员登录通过服务端验证，密码不会暴露在源码中</li>
+            <li>🚫 定期更新和轮换 GitHub Token</li>
+            <li>📝 GitHub Token 权限建议仅勾选 Contents (Read and write) 和 Metadata (Read)</li>
           </ul>
         </div>
       </div>
@@ -287,14 +283,8 @@ const { verifyGitHubConnection, loadCategoriesFromGitHub, saveCategoriesToGitHub
 const connectionStatus = ref(null)
 const testing = ref(false)
 
-// 环境变量配置
-const envConfig = ref({
-  adminPassword: '',
-  githubToken: '',
-  githubOwner: '',
-  githubRepo: '',
-  githubBranch: ''
-})
+// 环境变量配置（仅用于显示状态，实际配置在服务端）
+const envConfig = ref({})
 
 // 系统信息
 const systemInfo = ref({
@@ -364,14 +354,12 @@ const testConnection = async () => {
   }
 }
 
-// 检查环境变量配置
+// 检查前端可见的环境变量
 const checkEnvConfig = () => {
   envConfig.value = {
-    adminPassword: import.meta.env.VITE_ADMIN_PASSWORD ? '***' : '',
-    githubToken: import.meta.env.VITE_GITHUB_TOKEN ? '***' : '',
     githubOwner: import.meta.env.VITE_GITHUB_OWNER || '',
     githubRepo: import.meta.env.VITE_GITHUB_REPO || '',
-    githubBranch: import.meta.env.VITE_GITHUB_BRANCH || ''
+    githubBranch: import.meta.env.VITE_GITHUB_BRANCH || '',
   }
 }
 
@@ -763,6 +751,16 @@ onMounted(() => {
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 13px;
+}
+
+.env-hint {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #e8f5e9;
+  border-radius: 6px;
+  color: #2e7d32;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* 配置说明样式 */

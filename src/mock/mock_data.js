@@ -14,6 +14,20 @@ export const mockData = {
           "icon": "/sitelogo/www.bejson.com.ico"
         },
         {
+          "id": "curlconverter",
+          "name": "curl converter",
+          "url": "https://curlconverter.com/",
+          "description": "curl命令转换工具",
+          "icon": "/sitelogo/curlconverter.com.ico"
+        },
+        {
+          "id": "site-1774601326477",
+          "name": "猫猫绘图",
+          "url": "https://fast.catsapi.com",
+          "description": "文生图，图生图，文生视频站点",
+          "icon": "https://www.faviconextractor.com/favicon/fast.catsapi.com"
+        },
+        {
           "id": "linux-do",
           "name": "Linux.do",
           "url": "https://linux.do",
@@ -318,6 +332,35 @@ export const mockData = {
           "url": "https://www.oracle.com/java/technologies/downloads/",
           "description": "Oracle官方Java下载",
           "icon": "/sitelogo/www.oracle.com.ico"
+        },
+        {
+          "id": "site-1774438333579",
+          "name": "freemail",
+          "url": "https://mail.chatgpt.org.uk/",
+          "description": "免费邮箱站点",
+          "icon": "https://www.faviconextractor.com/favicon/mail.chatgpt.org.uk"
+        }
+      ]
+    },
+    {
+      "id": "category-1774510899116",
+      "icon": "☠️",
+      "name": "DDDD",
+      "order": 4,
+      "sites": [
+        {
+          "id": "site-1774510993770",
+          "name": "RiskTest",
+          "url": "https://risk.copolits.com/",
+          "description": "检测风控",
+          "icon": "https://www.faviconextractor.com/favicon/risk.copolits.com"
+        },
+        {
+          "id": "site-1774511036557",
+          "name": "虚拟地址",
+          "url": "https://ip-geoaddress-generator.pages.dev/",
+          "description": "获取当前ip地址",
+          "icon": "https://www.faviconextractor.com/favicon/ip-geoaddress-generator.pages.dev"
         }
       ]
     },
@@ -354,15 +397,8 @@ export const mockData = {
       "id": "community",
       "name": "社区论坛",
       "icon": "👥",
-      "order": 7,
+      "order": 5,
       "sites": [
-        {
-          "id": "stackoverflow",
-          "name": "Stack Overflow",
-          "url": "https://stackoverflow.com",
-          "description": "程序员问答社区",
-          "icon": "/sitelogo/stackoverflow.com.ico"
-        },
         {
           "id": "linuxdo",
           "name": "Linux.do",
@@ -376,6 +412,13 @@ export const mockData = {
           "url": "https://www.nodeseek.com",
           "description": "极客技术社区",
           "icon": "/sitelogo/www.nodeseek.com.ico"
+        },
+        {
+          "id": "stackoverflow",
+          "name": "Stack Overflow",
+          "url": "https://stackoverflow.com",
+          "description": "程序员问答社区",
+          "icon": "/sitelogo/stackoverflow.com.ico"
         },
         {
           "id": "v2ex",
@@ -397,7 +440,7 @@ export const mockData = {
       "id": "design",
       "name": "设计工具",
       "icon": "🎨",
-      "order": 8,
+      "order": 6,
       "sites": [
         {
           "id": "figma",
@@ -433,7 +476,7 @@ export const mockData = {
       "id": "finance",
       "name": "财经投资",
       "icon": "💰",
-      "order": 9,
+      "order": 7,
       "sites": [
         {
           "id": "binance",
@@ -497,7 +540,7 @@ export const mockData = {
       "id": "learning",
       "name": "学习资源",
       "icon": "📚",
-      "order": 10,
+      "order": 8,
       "sites": [
         {
           "id": "site-1767454229056",
@@ -540,7 +583,7 @@ export const mockData = {
       "id": "tools",
       "name": "在线工具",
       "icon": "⚙️",
-      "order": 11,
+      "order": 9,
       "sites": [
         {
           "id": "json-formatter",
@@ -576,7 +619,7 @@ export const mockData = {
       "id": "entertainment",
       "name": "娱乐休闲",
       "icon": "🎮",
-      "order": 12,
+      "order": 10,
       "sites": [
         {
           "id": "bilibili",
@@ -612,7 +655,7 @@ export const mockData = {
       "id": "office",
       "name": "办公协作",
       "icon": "💼",
-      "order": 13,
+      "order": 11,
       "sites": [
         {
           "id": "notion",

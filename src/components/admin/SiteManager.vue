@@ -656,7 +656,7 @@ const tryFallbackServices = async (domain) => {
   // 首先尝试icon服务
   // 支持多个favicon服务轮询尝试
   const iconServiceUrls = [
-    // `https://www.faviconextractor.com/favicon/${domain}`,
+    `https://www.faviconextractor.com/favicon/${domain}`,
     `https://icon.maodeyu.fun/favicon/${domain}`
   ]
 

@@ -1,6 +1,6 @@
 {
   "name": "mao_nav",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "🐱 一个简洁美观的个人导航网站，支持分类管理和自定义收藏夹",
   "private": false,
   "type": "module",

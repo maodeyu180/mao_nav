@@ -27,5 +27,6 @@ coverage
 *.sln
 *.sw?
 *.env
+.dev.vars
 *.tsbuildinfo
 local_data.js
