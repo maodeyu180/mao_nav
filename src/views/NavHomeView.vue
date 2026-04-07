@@ -59,8 +59,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="github-link"
-          <!-- 修改title="查看源代码" -->
-          title="点击看看吧！！！"
+          title="点击看看吧！！"
           
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
