@@ -465,6 +465,13 @@ export const mockData = {
           "url": "https://share.lanol.cn/",
           "description": "文件快递柜官方仓库Demo",
           "icon": "/sitelogo/share.lanol.cn.ico"
+        },
+        {
+          "id": "temp-sh",
+          "name": "Temp.sh",
+          "url": "https://temp.sh/",
+          "description": "临时云文件，最大支持4G",
+          "icon": "/sitelogo/temp.sh.ico"
         }
       ]
     },
