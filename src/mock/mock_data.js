@@ -792,6 +792,13 @@ export const mockData = {
           "url": "https://ddys.app/",
           "description": "会员制观影网站",
           "icon": "/sitelogo/ddys.app.ico"
+        },
+        {
+          "id": "acgndog",
+          "name": "次元狗动漫",
+          "url": "https://www.acgndog.com",
+          "description": "动画漫画下载站",
+          "icon": "/sitelogo/www.acgndog.com.ico"
         }
       ]
     },
