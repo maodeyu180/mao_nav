@@ -4,6 +4,7 @@ import { mockData } from '../mock/mock_data.js'
 export function useNavigation() {
   const categories = ref([])
   const title = ref('')
+  const icpNumber = ref('')
   const defaultSearchEngine = ref('bing')
   const loading = ref(false)
   const error = ref(null)
@@ -21,6 +22,7 @@ export function useNavigation() {
       // 默认使用本地mock数据
       categories.value = mockData.categories
       title.value = mockData.title
+      icpNumber.value = typeof mockData.icp === 'string' ? mockData.icp.trim() : ''
 
       // 设置默认搜索引擎，如果未指定或不存在则使用bing
       const searchEngines = ['google', 'baidu', 'bing', 'duckduckgo']
@@ -40,6 +42,7 @@ export function useNavigation() {
       // 兜底：始终返回 mock 数据
       categories.value = mockData.categories
       title.value = mockData.title
+      icpNumber.value = typeof mockData.icp === 'string' ? mockData.icp.trim() : ''
 
       // 设置默认搜索引擎
       const searchEngines = ['google', 'baidu', 'bing', 'duckduckgo']
@@ -58,6 +61,7 @@ export function useNavigation() {
   return {
     categories,
     title,
+    icpNumber,
     defaultSearchEngine,
     loading,
     error,

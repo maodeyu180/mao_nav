@@ -346,11 +346,12 @@ const saveToGitHub = async () => {
       console.warn('加载当前数据失败，使用默认值:', error)
     }
 
-    // 保存完整的数据结构，保留 search 字段
+    // 保存完整的数据结构，保留系统设置字段
     await saveCategoriesToGitHub({
       categories: categories.value,
       title: navTitle.value,
-      search: currentData.search || 'bing'  // 保留搜索引擎设置
+      search: currentData.search || 'bing',
+      icp: currentData.icp || ''
     })
     showDialog(
       'success',
@@ -359,7 +360,7 @@ const saveToGitHub = async () => {
       [
         '• 更改将在 2-3 分钟内自动部署到线上',
         '• 部署完成后，您可以在前台页面看到最新内容',
-        '• 如有问题，请检查Vercel或CFpage是否触发自动部署'
+        '• 如有问题，请检查部署平台是否触发自动部署'
       ]
     )
   } catch (error) {

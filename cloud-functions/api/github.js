@@ -30,8 +30,8 @@ function encodePath(path) {
 async function githubFetch(url, options, timeoutMs = 15000) {
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
-  // GitHub API 要求必须带 User-Agent 头，否则返回 403
   options.headers = { 'User-Agent': 'mao-nav-server', ...options.headers }
+
   try {
     const response = await fetch(url, { ...options, signal: controller.signal })
     clearTimeout(timeoutId)
@@ -43,7 +43,6 @@ async function githubFetch(url, options, timeoutMs = 15000) {
   }
 }
 
-// Get repo config: prefer request body, fallback to env vars
 function getRepoConfig(body, env) {
   return {
     owner: body.owner || env.GITHUB_OWNER || '',
@@ -63,10 +62,12 @@ const actions = {
         'X-GitHub-Api-Version': '2022-11-28',
       },
     })
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
       throw new Error(error.message || `HTTP ${response.status}: ${response.statusText}`)
     }
+
     const data = await response.json()
     if (!data.content) throw new Error('GitHub API 返回的数据中没有 content 字段')
 
@@ -74,16 +75,17 @@ const actions = {
     if (!isBinary) {
       const raw = atob(data.content)
       content = decodeURIComponent(
-        raw.split('').map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''),
+        raw.split('').map((char) => `%${char.charCodeAt(0).toString(16).padStart(2, '0')}`).join(''),
       )
     }
+
     return { content, sha: data.sha, path: data.path }
   },
 
   async updateFile({ path, content, message, sha }, token, { owner, repo, branch }) {
     const url = `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${encodePath(path)}`
     const base64Content = btoa(
-      encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (_, p1) => String.fromCharCode('0x' + p1)),
+      encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (_, hex) => String.fromCharCode(`0x${hex}`)),
     )
     const response = await githubFetch(url, {
       method: 'PUT',
@@ -95,16 +97,19 @@ const actions = {
       },
       body: JSON.stringify({ message, content: base64Content, sha, branch }),
     })
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
       throw new Error(error.message || `HTTP ${response.status}`)
     }
+
     return await response.json()
   },
 
   async uploadBinary({ path, content, message }, token, { owner, repo, branch }) {
     const url = `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${encodePath(path)}`
     let sha = null
+
     try {
       const checkResponse = await githubFetch(url, {
         method: 'GET',
@@ -118,7 +123,9 @@ const actions = {
         const existing = await checkResponse.json()
         sha = existing.sha
       }
-    } catch { /* file doesn't exist */ }
+    } catch {
+      // 文件不存在时直接创建
+    }
 
     const requestBody = { message, content, branch }
     if (sha) requestBody.sha = sha
@@ -133,10 +140,12 @@ const actions = {
       },
       body: JSON.stringify(requestBody),
     }, 30000)
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
       throw new Error(error.message || `HTTP ${response.status}`)
     }
+
     return await response.json()
   },
 
@@ -149,10 +158,12 @@ const actions = {
         Accept: 'application/vnd.github.v3+json',
       },
     })
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
       throw new Error(`GitHub 连接失败 (${response.status}): ${error.message || response.statusText}`)
     }
+
     const repoInfo = await response.json()
     return { connected: true, repo: repoInfo.full_name, permissions: repoInfo.permissions }
   },
@@ -165,7 +176,7 @@ export async function onRequestPost(context) {
     const githubToken = (env.GITHUB_TOKEN || '').trim()
     if (!githubToken) {
       return new Response(
-        JSON.stringify({ success: false, error: '服务端 GITHUB_TOKEN 未配置，请在部署平台环境变量中添加 GITHUB_TOKEN（不带 VITE_ 前缀）' }),
+        JSON.stringify({ success: false, error: '服务端 GITHUB_TOKEN 未配置' }),
         { status: 500, headers: corsHeaders },
       )
     }
@@ -193,11 +204,13 @@ export async function onRequestPost(context) {
     const result = await actions[action](params, githubToken, repoConfig)
 
     return new Response(JSON.stringify({ success: true, data: result }), {
-      status: 200, headers: corsHeaders,
+      status: 200,
+      headers: corsHeaders,
     })
   } catch (error) {
     return new Response(JSON.stringify({ success: false, error: error.message }), {
-      status: 500, headers: corsHeaders,
+      status: 500,
+      headers: corsHeaders,
     })
   }
 }

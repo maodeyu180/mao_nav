@@ -85,6 +85,30 @@
           <p class="setting-description">当前搜索引擎: {{ searchEngineOptions.find(opt => opt.value === currentSearchEngine)?.label || '未设置' }}</p>
         </div>
 
+        <!-- 网站备案号设置 -->
+        <div class="setting-group">
+          <label>网站备案号:</label>
+          <div class="title-input-group">
+            <input
+              v-model="icpNumber"
+              type="text"
+              placeholder="例如：京ICP备12345678号-1"
+              class="title-input"
+              maxlength="50"
+            >
+            <button
+              @click="saveIcpNumberToGitHub"
+              :disabled="icpSaving || icpNumber.trim() === currentIcpNumber"
+              class="save-title-btn"
+            >
+              {{ icpSaving ? '保存中...' : '💾 保存备案号' }}
+            </button>
+          </div>
+          <p class="setting-description">
+            保存后默认显示在网站底部；清空并保存即可隐藏。当前备案号: {{ currentIcpNumber || '未设置' }}
+          </p>
+        </div>
+
         <!-- Logo设置 -->
         <div class="setting-group">
           <label>网站Logo:</label>
@@ -205,7 +229,7 @@
         <div class="guide-step">
           <h4>2. 配置环境变量</h4>
           <p>
-            在部署平台（Cloudflare Pages / Vercel）的「环境变量」设置中添加：
+            在部署平台（Cloudflare Pages / Vercel / EdgeOne Pages）的「环境变量」设置中添加：
           </p>
           <div class="code-block">
             <pre><code># === 服务端密钥（不加 VITE_ 前缀，前端不可见）===
@@ -218,14 +242,14 @@ VITE_GITHUB_REPO=your_github_repo_here
 VITE_GITHUB_BRANCH=master</code></pre>
           </div>
           <p style="color:#27ae60;font-weight:500;">
-            密钥类变量存储在服务端，仓库信息为公开数据可安全暴露。同时支持 Cloudflare Pages 和 Vercel 部署。
+            密钥类变量存储在服务端，仓库信息为公开数据可安全暴露。同时支持 Cloudflare Pages、Vercel 和 EdgeOne Pages 部署。
           </p>
         </div>
 
         <div class="guide-step">
           <h4>3. 安全说明</h4>
           <ul>
-            <li>🔒 所有密钥通过 CF Pages Functions 在服务端使用，前端代码不包含任何敏感信息</li>
+            <li>🔒 所有密钥仅通过部署平台的 Serverless Functions 在服务端使用，前端代码不包含任何敏感信息</li>
             <li>🔑 管理员登录通过服务端验证，密码不会暴露在源码中</li>
             <li>🚫 定期更新和轮换 GitHub Token</li>
             <li>📝 GitHub Token 权限建议仅勾选 Contents (Read and write) 和 Metadata (Read)</li>
@@ -302,6 +326,11 @@ const titleSaving = ref(false)
 const searchEngine = ref('bing')
 const currentSearchEngine = ref('bing')
 const searchEngineSaving = ref(false)
+
+// 网站备案号设置
+const icpNumber = ref('')
+const currentIcpNumber = ref('')
+const icpSaving = ref(false)
 
 // 搜索引擎选项
 const searchEngineOptions = [
@@ -382,12 +411,17 @@ const loadWebsiteSettings = async () => {
     // 加载搜索引擎设置
     currentSearchEngine.value = data.search || 'bing'
     searchEngine.value = currentSearchEngine.value
+
+    currentIcpNumber.value = typeof data.icp === 'string' ? data.icp.trim() : ''
+    icpNumber.value = currentIcpNumber.value
   } catch (error) {
     console.error('加载网站设置失败:', error)
     currentTitle.value = '猫猫导航'
     websiteTitle.value = '猫猫导航'
     currentSearchEngine.value = 'bing'
     searchEngine.value = 'bing'
+    currentIcpNumber.value = ''
+    icpNumber.value = ''
   }
 }
 
@@ -422,7 +456,7 @@ const saveTitleToGitHub = async () => {
       [
         '• 更改将在 2-3 分钟内自动部署到线上',
         '• 部署完成后，您可以在前台页面看到最新标题',
-        '• 如有问题，请检查Vercel或CFpage是否触发自动部署'
+        '• 如有问题，请检查部署平台是否触发自动部署'
       ]
     )
   } catch (error) {
@@ -459,7 +493,7 @@ const saveSearchEngineToGitHub = async () => {
       [
         '• 更改将在 2-3 分钟内自动部署到线上',
         '• 部署完成后，用户访问网站时将默认使用新的搜索引擎',
-        '• 如有问题，请检查Vercel或CFpage是否触发自动部署'
+        '• 如有问题，请检查部署平台是否触发自动部署'
       ]
     )
   } catch (error) {
@@ -472,6 +506,39 @@ const saveSearchEngineToGitHub = async () => {
     )
   } finally {
     searchEngineSaving.value = false
+  }
+}
+
+// 保存网站备案号到GitHub
+const saveIcpNumberToGitHub = async () => {
+  icpSaving.value = true
+  try {
+    const data = await loadCategoriesFromGitHub()
+    data.icp = icpNumber.value.trim()
+
+    await saveCategoriesToGitHub(data)
+
+    currentIcpNumber.value = data.icp
+    icpNumber.value = data.icp
+    showDialog(
+      'success',
+      '🎉 备案号保存成功',
+      data.icp ? '备案号已保存，将显示在网站底部。' : '备案号已清空，网站底部将不再显示备案信息。',
+      [
+        '• 更改将在 2-3 分钟内自动部署到线上',
+        '• 备案号会自动链接至工信部备案管理系统'
+      ]
+    )
+  } catch (error) {
+    console.error('保存备案号失败:', error)
+    showDialog(
+      'error',
+      '❌ 保存失败',
+      '备案号保存过程中发生错误，请重试',
+      [`• 错误详情: ${error.message}`]
+    )
+  } finally {
+    icpSaving.value = false
   }
 }
 
@@ -555,7 +622,7 @@ const saveLogoToGitHub = async () => {
       [
         '• 更改将在 2-3 分钟内自动部署到线上',
         '• 部署完成后，刷新页面即可看到新Logo',
-        '• 如有问题，请检查Vercel或CFpage是否触发自动部署'
+        '• 如有问题，请检查部署平台是否触发自动部署'
       ]
     )
   } catch (error) {

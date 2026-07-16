@@ -96,7 +96,9 @@ export function useGitHubAPI() {
   // Save categories to GitHub
   const saveCategoriesToGitHub = async (data) => {
     const currentFile = await getFileContent('src/mock/mock_data.js')
-    const formattedData = JSON.stringify(data, null, 2)
+    const dataToSave = { ...data }
+    delete dataToSave._fileSha
+    const formattedData = JSON.stringify(dataToSave, null, 2)
     const newContent = `export const mockData = ${formattedData}\n`
     const message = `chore: 更新导航数据 - ${new Date().toLocaleString('zh-CN')}`
 

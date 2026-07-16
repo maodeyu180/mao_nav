@@ -19,6 +19,16 @@ export default defineConfig([
     },
   },
 
+  {
+    name: 'app/vercel-functions',
+    files: ['api/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
 ])

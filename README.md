@@ -7,6 +7,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5.4.10-646CFF?logo=vite)](https://vitejs.dev/)
 [![Cloudflare](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-F38020?logo=cloudflare)](https://pages.cloudflare.com/)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel)](https://vercel.com/)
+[![EdgeOne](https://img.shields.io/badge/Deploy-EdgeOne%20Pages-006EFF)](https://edgeone.ai/pages/)
 
 ## 🛠️ 更新记录
 - 2025-07-15 完善logo自动获取流程。
@@ -16,6 +17,7 @@
 - 2025-07-30 修复item展示问题，增加环境变量VITE_OPEN_LOCK，配置首页也需验证密码。
 - 2025-08-11 增加夜间模式，增加默认搜索引擎设置功能。
 - 2025-03-25 **v2.0.0** 安全架构升级：密钥迁移至服务端 Functions，同时支持 Cloudflare Pages 和 Vercel 部署。
+- 2026-07-16 增加备案号配置、EdgeOne Pages 全栈部署适配，以及 Vercel / EdgeOne 一键部署入口。
 
 ## 效果预览
 示例站点: [猫猫导航](https://nav.maodeyu.fun)
@@ -27,16 +29,38 @@
 - 📱 **多设备适配** - 完美支持桌面端、平板和移动端
 - 🔥 **分类管理** - 支持自定义分类和网站管理
 - ⚡ **快速访问** - 基于 Vue 3 + Vite 构建，加载速度极快
-- 🌐 **免费部署** - 支持 Cloudflare Pages 和 Vercel 免费部署
+- 🌐 **多平台部署** - 支持 Cloudflare Pages、Vercel 和 EdgeOne Pages
 - 🛠️ **易于定制** - 简单的配置即可个性化你的导航
 - 👨‍💻 **管理界面** - 可选配置管理员界面，支持可视化添加/编辑分类和网站
 - 🔒 **安全架构** - 管理员密钥和 GitHub Token 存储在服务端，前端代码不包含任何敏感信息
+- 🧾 **备案信息** - 可在管理后台配置 ICP 备案号，默认显示在网站底部
 
 
 ## 🚀 快速开始
 图文教程可访问[猫猫导航图文教程](https://blog.maodeyu.fun/2025/07/16/nav_mao/)
 
 > 💬 **部署遇到问题？** 欢迎加入 QQ 交流群：**494775899**，群里有热心小伙伴一起帮你排查问题。
+
+### 一键部署（推荐新用户）
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmaodeyu180%2Fmao_nav&env=ADMIN_PASSWORD%2CGITHUB_TOKEN%2CVITE_GITHUB_OWNER%2CVITE_GITHUB_REPO%2CVITE_GITHUB_BRANCH&envDefaults=%7B%22VITE_GITHUB_REPO%22%3A%22mao-nav%22%2C%22VITE_GITHUB_BRANCH%22%3A%22master%22%7D&project-name=mao-nav&repository-name=mao-nav)
+
+[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Fmaodeyu180%2Fmao_nav&repository-name=mao-nav&project-name=mao-nav&build-command=npm%20run%20build&install-command=npm%20ci&output-directory=dist&env=ADMIN_PASSWORD%2CGITHUB_TOKEN%2CVITE_GITHUB_OWNER%2CVITE_GITHUB_REPO%2CVITE_GITHUB_BRANCH)
+
+- **Vercel**：按钮会进入项目创建流程，将源码克隆到你选择的 GitHub / GitLab / Bitbucket 账号并自动部署；填写页面提示的环境变量即可。
+- **EdgeOne Pages**：按钮会预填仓库、构建配置和环境变量，确认后开始部署。对于普通外部仓库，平台流程不保证一定创建你自己的 Fork；如需使用管理后台保存数据，请确保部署关联的是你有写权限的仓库。
+- 只浏览导航首页时可以不配置环境变量；使用 `/admin` 管理后台时必须配置下方列出的密钥和仓库信息。
+
+### 平台兼容性
+
+| 平台 | 导航首页 | 管理后台 | 服务端函数目录 | 部署方式 |
+|---|---|---|---|---|
+| Cloudflare Pages | ✅ | ✅ | `functions/` | 连接 Git 仓库 |
+| Vercel | ✅ | ✅ | `api/` | 一键克隆部署 / 连接 Git 仓库 |
+| EdgeOne Pages | ✅ | ✅ | `cloud-functions/` | 一键导入部署 / 连接 Git 仓库 |
+
+三个平台都使用 `npm run build`，构建产物目录均为 `dist`。不要只上传 `dist` 来部署完整版本，否则服务端 Functions 不会生效，`/admin` 将无法登录或保存数据。
+
 ### 🚀 部署到 Cloudflare（推荐）
 
 **1. Fork 本项目**
@@ -65,6 +89,28 @@
 **4. 绑定自定义域名（可选）**
 - 在 Cloudflare Pages 项目设置中点击 **"Custom domains"**
 - 添加你的域名并按提示配置 DNS
+
+---
+
+### 🚀 部署到 EdgeOne Pages
+
+**1. Fork 本项目**
+- 在 GitHub 将本项目 Fork 到你的账号；需要使用管理后台时，必须部署这个有写权限的仓库。
+
+**2. 在 EdgeOne Pages 控制台部署**
+1. 访问 [EdgeOne Pages](https://edgeone.ai/pages/) 并登录。
+2. 创建项目，选择 **导入 Git 仓库**，授权 GitHub 后选择你的 Fork。
+3. 项目已提供 `edgeone.json`，平台会读取以下构建配置：
+   - **Install command**: `npm ci`
+   - **Build command**: `npm run build`
+   - **Output directory**: `dist`
+4. 配置环境变量（见下方[环境变量配置](#-环境变量配置)）。
+5. 确认并开始部署。
+
+项目中的 `cloud-functions/api/verify.js` 和 `cloud-functions/api/github.js` 会分别生成 `/api/verify` 与 `/api/github`，因此管理后台、GitHub 数据保存和 Logo 上传均可用。后续向生产分支推送代码会自动触发新部署。
+
+**3. 绑定自定义域名（可选）**
+- 在项目的域名设置中添加域名，并按控制台提示配置 CNAME 和 HTTPS。
 
 ---
 
@@ -101,13 +147,14 @@
 
 v2.0 起，敏感密钥存储在服务端（通过 Serverless Functions），前端代码不包含任何敏感信息。
 
-在部署平台（Cloudflare Pages / Vercel）的 **Environment Variables** 中配置：
+在部署平台（Cloudflare Pages / Vercel / EdgeOne Pages）的 **Environment Variables** 中配置：
 
 #### 服务端密钥（不加 VITE_ 前缀，前端不可见）
 
 > **重要**：这两个变量请在部署平台中设置为 **Encrypted（加密）** 类型：
 > - Cloudflare Pages：添加变量时选择 **Encrypt** 按钮
 > - Vercel：添加变量时勾选 **Sensitive** 选项
+> - EdgeOne Pages：在项目设置的环境变量中添加，并避免把值写入源码或构建日志
 >
 > 加密后变量值在后台不可查看，防止他人登录你的平台账号后直接看到密钥。
 
@@ -173,7 +220,7 @@ VITE_GITHUB_REPO=mao_nav
 VITE_GITHUB_BRANCH=master
 ```
 
-创建 `.dev.vars` 文件（服务端密钥，仅 wrangler 使用）：
+测试 Cloudflare Functions 时，创建 `.dev.vars` 文件（不要提交）：
 ```
 ADMIN_PASSWORD=your_password
 GITHUB_TOKEN=your_github_token
@@ -189,6 +236,11 @@ npm run dev
 完整本地测试（含 Functions，需安装 wrangler）：
 ```bash
 npm run build && npx wrangler pages dev dist
+```
+
+测试 EdgeOne Cloud Functions：
+```bash
+npx edgeone makers dev
 ```
 
 ### 项目结构
@@ -212,11 +264,16 @@ mao_nav/
 ├── api/                 # Vercel Serverless Functions (服务端)
 │   ├── verify.js        # 管理员密钥验证
 │   └── github.js        # GitHub API 代理
+├── cloud-functions/     # EdgeOne Pages Cloud Functions (服务端)
+│   └── api/
+│       ├── verify.js    # 管理员密钥验证
+│       └── github.js    # GitHub API 代理
 ├── public/              # 公共静态文件
 ├── index.html           # HTML 模板
 ├── package.json         # 项目配置
 ├── vite.config.js       # Vite 配置
-└── vercel.json          # Vercel 部署配置
+├── vercel.json          # Vercel 部署配置
+└── edgeone.json         # EdgeOne Pages 部署配置
 ```
 
 ## 🎯 自定义配置
@@ -246,9 +303,14 @@ export const mockData = {
         }
       ]
     }
-  ]
+  ],
+  title: "我的导航",
+  search: "bing",
+  icp: "京ICP备12345678号-1"
 }
 ```
+
+`icp` 留空时不显示备案信息；填写后会默认显示在页面底部，并链接到工信部备案管理系统。也可以进入 `/admin` → **系统设置** 在线修改或清空备案号。
 
 **方式2：使用管理员界面（可选）**
 如果你配置了管理员界面（见上方配置说明），可以通过以下步骤可视化管理：
@@ -289,8 +351,8 @@ npm run build && npx wrangler pages dev dist
 在部署前请检查：
 
 - [ ] 已修改 `src/mock/mock_data.js` 为你的个人数据
-- [ ] 已在部署平台配置服务端密钥（`ADMIN_PASSWORD`、`GITHUB_TOKEN`）
-- [ ] 已在部署平台配置前端变量（`VITE_GITHUB_OWNER`、`VITE_GITHUB_REPO`）
+- [ ] 如需管理后台，已配置服务端密钥（`ADMIN_PASSWORD`、`GITHUB_TOKEN`）
+- [ ] 如需管理后台，已配置前端变量（`VITE_GITHUB_OWNER`、`VITE_GITHUB_REPO`）
 - [ ] 已测试构建命令 `npm run build`
 - [ ] 已验证 `dist` 目录生成正常
 
@@ -312,7 +374,7 @@ git merge upstream/master
 
 **2. 修改部署平台的环境变量**
 
-在 Cloudflare Pages / Vercel 的环境变量设置中：
+在 Cloudflare Pages / Vercel / EdgeOne Pages 的环境变量设置中：
 
 | 操作 | 变量名 | 说明 |
 |---|---|---|
@@ -351,6 +413,7 @@ git merge upstream/master
 - [Vite](https://vitejs.dev/) - 下一代前端构建工具
 - [Cloudflare Pages](https://pages.cloudflare.com/) - 现代化的 JAMstack 平台
 - [Vercel](https://vercel.com/) - 前端云平台
+- [EdgeOne Pages](https://edgeone.ai/pages/) - 边缘全栈部署平台
 - [Pinia](https://pinia.vuejs.org/) - Vue.js 状态管理库
 
 ## 📞 联系方式
