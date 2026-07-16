@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { mockData } from '../mock/mock_data.js'
+import { mockData } from '../mock/navigation_data.js'
 
 export function useNavigation() {
   const categories = ref([])

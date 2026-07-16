@@ -24,6 +24,7 @@
 - 🛠️ **易于定制** - 简单的配置即可个性化你的导航
 - 👨‍💻 **管理界面** - 可选配置管理员界面，支持可视化添加/编辑分类和网站
 - 🔒 **安全架构** - 管理员密钥和 GitHub Token 存储在服务端，前端代码不包含任何敏感信息
+- 🧩 **数据隔离** - 用户导航按 GitHub 账号和仓库名独立存储，同步上游代码不会覆盖个人配置
 - 🧾 **备案信息** - 可在管理后台配置 ICP 备案号，默认显示在网站底部
 
 ## 🚀 快速开始
@@ -36,7 +37,7 @@
 
 | 使用方式 | 是否需要环境变量 | 是否可用 `/admin` | 适合场景 |
 |---|---|---|---|
-| 仅展示导航首页 | 否 | 否 | 直接修改 `src/mock/mock_data.js` 后部署 |
+| 仅展示导航首页 | 否 | 否 | 复制默认模板为 `src/mock/user_data.js` 后修改并部署 |
 | 完整版（推荐） | 是 | 是 | 在管理后台可视化编辑，并保存到 GitHub |
 
 下面默认按“完整版”说明。只需要静态首页的用户仍需先 Fork，然后可以跳过 Token 和环境变量配置，直接参考[选择平台部署](#4-选择平台部署)。
@@ -53,6 +54,8 @@
 4. 点击 **Create fork**，等待仓库创建完成。
 
 后续生成 Token、填写环境变量和部署时，都使用这个 Fork 后的仓库信息。
+
+管理后台首次保存时会在你的 Fork 中创建 `src/mock/user_data/<GitHub账号>__<仓库名>.js`。每个 Fork 的文件名都不同，因此以后同步上游代码不会覆盖个人导航数据。
 
 #### 2.2 获取 GitHub Token（完整版必读）
 
@@ -142,6 +145,7 @@ VITE_GITHUB_BRANCH=master
 
 - 访问站点首页确认导航正常。
 - 访问 `https://你的域名/admin`，使用 `ADMIN_PASSWORD` 登录并测试保存。
+- 第一次保存会自动创建按 GitHub 账号和仓库名隔离的个人导航文件，后续配置都写入该文件。
 - 如需自定义域名，在对应平台的项目域名设置中添加，并按提示配置 DNS。
 - 后续向生产分支推送代码，平台会自动触发重新部署。
 
@@ -216,7 +220,11 @@ mao_nav/
 │   ├── apis/           # API 接口
 │   ├── assets/         # 静态资源（图片、样式等）
 │   ├── components/     # Vue 组件
-│   ├── mock/           # 模拟数据
+│   ├── mock/
+│   │   ├── mock_data.js       # 上游默认数据模板
+│   │   ├── navigation_data.js # 优先加载用户数据的入口
+│   │   ├── user_data.js       # 静态版用户数据（用户自行创建）
+│   │   └── user_data/          # 完整版数据目录（后台首次保存后生成）
 │   ├── router/         # 路由配置
 │   ├── stores/         # Pinia 状态管理
 │   ├── views/          # 页面组件
@@ -247,8 +255,19 @@ mao_nav/
 
 有两种方式来自定义你的导航分类和网站：
 
-**方式1：直接编辑文件（推荐）**
-编辑 `src/mock/mock_data.js` 文件来自定义你的导航分类和网站：
+**方式1：使用管理员界面（推荐）**
+
+部署完整版后访问 `/admin`。第一次点击“保存到 GitHub”会自动创建 `src/mock/user_data/<GitHub账号>__<仓库名>.js`，后续所有导航配置都保存在这个专属文件中。
+
+**方式2：直接编辑文件**
+
+先复制默认模板，再编辑 `src/mock/user_data.js`：
+
+```bash
+cp src/mock/mock_data.js src/mock/user_data.js
+```
+
+文件内容格式如下：
 
 ```javascript
 export const mockData = {
@@ -277,15 +296,6 @@ export const mockData = {
 
 `icp` 留空时不显示备案信息；填写后会默认显示在页面底部，并链接到工信部备案管理系统。也可以进入 `/admin` → **系统设置** 在线修改或清空备案号。
 
-**方式2：使用管理员界面（可选）**
-如果你配置了管理员界面（见上方配置说明），可以通过以下步骤可视化管理：
-
-1. 访问 `https://your-domain.com/admin`
-2. 输入管理员密钥登录
-3. 在界面中添加、编辑或删除分类和网站
-4. 点击"保存到GitHub"按钮保存更改
-5. 系统会自动在 2-3 分钟内重新部署
-
 ### 自定义样式
 
 - 主要样式文件：`src/assets/main.css`
@@ -296,14 +306,34 @@ export const mockData = {
 
 在部署前请检查：
 
-- [ ] 已修改 `src/mock/mock_data.js` 为你的个人数据
+- [ ] 已通过管理后台生成专属数据文件，或为静态版手动创建 `src/mock/user_data.js`
 - [ ] 如需管理后台，Token 仅授权实际部署仓库的 `Contents: Read and write`
 - [ ] 已在平台配置 `ADMIN_PASSWORD` 和 `GITHUB_TOKEN`，并按敏感变量保存
 - [ ] `VITE_GITHUB_OWNER`、`VITE_GITHUB_REPO`、`VITE_GITHUB_BRANCH` 与实际仓库一致
 - [ ] 已测试构建命令 `npm run build`
 - [ ] 部署后已验证首页、`/admin` 登录和保存功能
 
-## 🔄 从 v1.x 升级到 v2.0
+## 🔄 安全同步上游更新
+
+新版本会优先加载 `src/mock/user_data/<GitHub账号>__<仓库名>.js`。如果专属文件尚未创建，会自动读取旧 Fork 原有的 `src/mock/mock_data.js`，所以旧用户不需要提前复制文件或手动迁移。
+
+### 旧版本用户直接同步即可
+
+旧版本的个人导航继续从原来的 `src/mock/mock_data.js` 加载。缺少 `icp` 字段不会报错，系统会将其视为空值；升级后第一次在管理后台保存时，会自动把完整配置和 `icp` 字段写入账号与仓库专属的数据文件。
+
+正常同步上游即可：
+
+```bash
+git fetch upstream
+git merge upstream/master
+git push
+```
+
+也可以直接在 GitHub 网页点击 **Sync fork**。从这个版本开始，上游不再修改 `src/mock/mock_data.js`，管理后台也不会再把用户配置写入该文件。
+
+> 如果非常早期的 Fork 因历史上双方都修改过 `mock_data.js` 而出现冲突，GitHub 会停止同步，不会静默覆盖导航数据。不要使用强制同步或 **Discard commits**，这类操作会主动丢弃 Fork 中的个人提交。
+
+## 🔐 从 v1.x 升级到 v2.0
 
 > 仅老用户（v1.x 已部署）需要看这一节，新用户可以跳过。
 
@@ -349,6 +379,7 @@ git merge upstream/master
 - 2025-07-30 修复站点展示问题，增加 `VITE_OPEN_LOCK` 首页访问锁定配置。
 - 2025-08-11 增加夜间模式和默认搜索引擎设置。
 - 2026-07-16 增加备案号配置、EdgeOne Pages 全栈部署适配，以及 Vercel / EdgeOne 部署说明。
+- 2026-07-16 将个人导航数据迁移到按 GitHub 账号和仓库名隔离的专属文件，避免同步上游时覆盖用户配置。
 
 ## 🤝 贡献
 

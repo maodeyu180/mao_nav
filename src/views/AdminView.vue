@@ -253,7 +253,7 @@ const loadCategories = async () => {
 
   try {
     // 直接加载本地数据，避免GitHub API调用
-    const { mockData } = await import('../mock/mock_data.js')
+    const { mockData } = await import('../mock/navigation_data.js')
     categories.value = mockData.categories || []
     navTitle.value = mockData.title || '猫猫导航'
     console.log('✅ 本地数据加载成功，分类数量:', categories.value.length)
@@ -307,7 +307,7 @@ const skipLoading = async () => {
 
   // 尝试加载本地数据
   try {
-    const { mockData } = await import('../mock/mock_data.js')
+    const { mockData } = await import('../mock/navigation_data.js')
     categories.value = mockData.categories || []
     navTitle.value = mockData.title || '猫猫导航'
     console.log('跳过加载后，使用本地数据:', categories.value.length)
@@ -411,7 +411,7 @@ onMounted(() => {
     isAuthenticated.value = true
 
     // Load local data for initial display
-    import('../mock/mock_data.js').then(({ mockData }) => {
+    import('../mock/navigation_data.js').then(({ mockData }) => {
       categories.value = mockData.categories || []
       navTitle.value = mockData.title || '猫猫导航'
     }).catch(() => {

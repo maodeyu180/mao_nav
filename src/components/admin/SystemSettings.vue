@@ -210,7 +210,7 @@
               <ul>
                 <li>
                   <code>Contents</code> - <strong>Read and write</strong> ✅<br>
-                  <span style="color:#888;font-size:13px;">用于读取和修改 <code>src/mock/mock_data.js</code> 文件，这是管理系统的核心功能</span>
+                  <span style="color:#888;font-size:13px;">用于读取和修改按 GitHub 账号与仓库名隔离的个人导航文件，这是管理系统的核心功能</span>
                 </li>
                 <li>
                   <code>Metadata</code> - <strong>Read</strong> ✅<br>

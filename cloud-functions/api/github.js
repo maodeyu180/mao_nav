@@ -52,8 +52,8 @@ function getRepoConfig(body, env) {
 }
 
 const actions = {
-  async getFile({ path, isBinary }, token, { owner, repo }) {
-    const url = `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${encodePath(path)}`
+  async getFile({ path, isBinary, allowMissing }, token, { owner, repo, branch }) {
+    const url = `${GITHUB_API_BASE}/repos/${owner}/${repo}/contents/${encodePath(path)}?ref=${encodeURIComponent(branch)}`
     const response = await githubFetch(url, {
       method: 'GET',
       headers: {
@@ -63,6 +63,9 @@ const actions = {
       },
     })
 
+    if (response.status === 404 && allowMissing) {
+      return { exists: false, path }
+    }
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
       throw new Error(error.message || `HTTP ${response.status}: ${response.statusText}`)
@@ -79,7 +82,7 @@ const actions = {
       )
     }
 
-    return { content, sha: data.sha, path: data.path }
+    return { exists: true, content, sha: data.sha, path: data.path }
   },
 
   async updateFile({ path, content, message, sha }, token, { owner, repo, branch }) {
@@ -87,6 +90,9 @@ const actions = {
     const base64Content = btoa(
       encodeURIComponent(content).replace(/%([0-9A-F]{2})/g, (_, hex) => String.fromCharCode(`0x${hex}`)),
     )
+    const requestBody = { message, content: base64Content, branch }
+    if (sha) requestBody.sha = sha
+
     const response = await githubFetch(url, {
       method: 'PUT',
       headers: {
@@ -95,7 +101,7 @@ const actions = {
         'X-GitHub-Api-Version': '2022-11-28',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message, content: base64Content, sha, branch }),
+      body: JSON.stringify(requestBody),
     })
 
     if (!response.ok) {
@@ -111,7 +117,7 @@ const actions = {
     let sha = null
 
     try {
-      const checkResponse = await githubFetch(url, {
+      const checkResponse = await githubFetch(`${url}?ref=${encodeURIComponent(branch)}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
